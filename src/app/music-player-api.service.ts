@@ -9,7 +9,7 @@ export class MusicPlayerApiService {
   constructor(private http: HttpClient) { }
 
   httpUrl = `http://localhost:3000/musics/list`
-  httpMusicUrl = `http://localhost:3000/music/`
+  httpMusicUrl = `http://localhost:3000/audio/`
 
   getMusicsList() {
     return this.http.get(this.httpUrl)

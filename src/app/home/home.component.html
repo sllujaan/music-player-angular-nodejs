@@ -1,4 +1,43 @@
 <p>home works!</p>
 
 
-<div *ngFor="let music of musicsList">{{music}}</div>
+<h1>Music Library</h1>
+<div class="top-container">
+    <!--Musics contianer-------------------------------->
+    <div class="musics-container">
+
+        <div *ngFor="let music of musicsList">
+            <!--music container------------------------------------>
+            <div class="music-container">
+                <div class="picture">
+                    <div class="play"><i class="fas fa-play fa-1x"></i></div>
+                </div>
+                <div class="name">name</div>
+            </div>
+            <!------------------------------------------------------>
+        </div>
+        
+    </div>
+
+</div>
+
+
+<!---Top bar content--------------------------------------------->
+<div class="top-bar">
+    <div class="all">All</div>
+    <div class="recent">Recent</div>
+    <div class="albums">Albums</div>
+    <div class="artist">Artists</div>
+    <div class="genres">Genres</div>
+</div>
+<!--------------------------------------------------------------->
+
+<!---side bar content--------------------------------------------->
+<div class="side-bar">
+    <div class="all">All</div>
+    <div class="recent">Recent</div>
+    <div class="albums">Albums</div>
+    <div class="artist">Artists</div>
+    <div class="genres">Genres</div>
+</div>
+<!--------------------------------------------------------------->
