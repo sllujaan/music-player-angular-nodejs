@@ -10,6 +10,7 @@ export class MusicPlayerApiService {
 
   httpUrl = `http://localhost:3000/musics/list`
   httpMusicUrl = `http://localhost:3000/audio/`
+  httpMusicTagUrl = `http://localhost:3000/music/tag/`
 
   getMusicsList() {
     return this.http.get(this.httpUrl)
@@ -17,6 +18,10 @@ export class MusicPlayerApiService {
   getMusic(musicName) {
     if(!musicName) throw Error("music name is required.")
     else return this.http.get(this.httpMusicUrl+musicName)
+  }
+  getMusicTag(musicName) {
+    if(!musicName) throw Error("music name is required.")
+    else return this.http.get(this.httpMusicTagUrl+musicName)
   }
 
   getService() {
