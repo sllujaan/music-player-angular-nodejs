@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, QueryList } from '@angular/core';
 import { MusicPlayerApiService } from '../music-player-api.service';
 
 @Component({
@@ -6,9 +6,20 @@ import { MusicPlayerApiService } from '../music-player-api.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
   constructor(private music: MusicPlayerApiService) { }
+
+  ngAfterViewInit(): void {
+    //throw new Error("Method not implemented.");
+    
+    console.error("dom component is ready.")
+    //this.musicsContainer.changes.subscribe()
+    this.musicsContainer.changes.subscribe(observer => {
+      console.log("ngFor rendered.")
+    })
+
+  }
 
   musicsList = null
   audio = null
@@ -16,8 +27,14 @@ export class HomeComponent implements OnInit {
 
   tags = []
 
+  @ViewChild('musicsContainer', {static: true}) musicsContainer: QueryList<any>
+
   ngOnInit(): void {
     
+    console.log(this.musicsContainer)
+
+
+
     this.handleFetchMusics()
 
   }
@@ -39,16 +56,19 @@ export class HomeComponent implements OnInit {
           const url = this.music.httpMusicTagUrl + this.musicsList[2]
           console.log(url)
 
-          this.musicsList.forEach(musicName => {
-            this.music.getMusicTag(musicName)
-            .subscribe(
-              res => {
-                const tag = {title: res.title, album: res.album, artist: res.artist, genre: res.genre, year: res.year}
-                this.tags.push(tag)
-              },
-              err => {console.error(err)}
-            )
-          });
+          if(this.musicsList.length > 0) {
+            this.musicsList.forEach(musicName => {
+              this.music.getMusicTag(musicName)
+              .subscribe(
+                res => {
+                  
+                  const tag = {title: res.title, album: res.album, artist: res.artist, genre: res.genre, year: res.year}
+                  this.tags.push(tag)
+                },
+                err => {console.error(err)}
+              )
+            });
+          }
 
           //this.audio = new Audio(url)
           //this.initAudioEvents()
