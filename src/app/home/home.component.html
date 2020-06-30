@@ -6,7 +6,7 @@
     <!--Musics contianer-------------------------------->
     <div class="musics-container" #musicsContainer>
 
-        <div *ngFor="let music of musicsList">
+        <div *ngFor="let music of musicsList; let l = last">
             <!--music container------------------------------------>
             <div class="music-container">
                 <div class="picture">
