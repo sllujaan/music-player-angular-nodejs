@@ -6,18 +6,20 @@
     <!--Musics contianer-------------------------------->
     <div class="musics-container" #musicsContainer>
 
-        <div *ngFor="let music of musicsList; let l = last">
+        <div *ngFor="let music of musicsList" >
             <!--music container------------------------------------>
-            <div class="music-container">
-                <div class="picture">
-                    <div class="play"><i class="fas fa-play fa-1x"></i></div>
-                </div>
-                <div class="name">name</div>
+        <div class="music-container">
+            <div class="picture" style="background-image: url('{{music.imageUrl}}');">
+                <div class="play"><i class="fas fa-play fa-1x"></i></div>
             </div>
-            <!------------------------------------------------------>
+            <div class="name">{{music.musicName}}</div>
+        </div>
+        <!------------------------------------------------------>
         </div>
         
     </div>
+
+    <button *ngIf="(res && res.length > 0)" (click)="generateMusicsList(page = page + 1)" >Load More!</button>
 
 </div>
 
