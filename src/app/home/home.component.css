@@ -12,9 +12,13 @@
 
 }
 
+
 body{
     z-index: var(--body-z-index);
     margin: 0;
+    padding: 0;
+    background-color: black;
+
 }
 
 
@@ -204,6 +208,7 @@ h1{
 }
 
 .top-container {
+    
 }
 
 

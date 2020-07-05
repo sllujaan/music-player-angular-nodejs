@@ -11,6 +11,7 @@ export class MusicPlayerApiService {
   httpUrl = `http://localhost:3000/list/`
   httpMusicUrl = `http://localhost:3000/audio/`
   httpMusicTagUrl = `http://localhost:3000/music/tag/`
+  public httpSeverUrl = `http://localhost:3000/`
 
   getMusicsList(page) {
     return this.http.get(this.httpUrl + page)

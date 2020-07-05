@@ -9,7 +9,8 @@
         <div *ngFor="let music of musicsList" >
             <!--music container------------------------------------>
         <div class="music-container">
-            <div class="picture" style="background-image: url('{{music.imageUrl}}');">
+            <div class="picture" >
+                <img [src]="musics_api.httpSeverUrl+music.imageUrl" alt="photo" srcset="">
                 <div class="play"><i class="fas fa-play fa-1x"></i></div>
             </div>
             <div class="name">{{music.musicName}}</div>
@@ -43,3 +44,6 @@
     <div class="genres">Genres</div>
 </div>
 <!--------------------------------------------------------------->
+
+
+<!--background-image: url('{{ (musics_api.httpSeverUrl + music.imageUrl) }}');-->

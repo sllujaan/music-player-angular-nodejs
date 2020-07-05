@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 
-  constructor(private musics_api: MusicPlayerApiService, private render: Renderer2) { }
+  constructor(public musics_api: MusicPlayerApiService, private render: Renderer2) { }
 
   ngAfterViewInit(): void {
     console.warn("dom component is ready.")
@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.generateMusicsList(this.page)
 
   }
+
+  
 
   res: any
   arr = []
@@ -33,7 +35,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('musicsContainer', {static: true}) musicsContainer: ElementRef
 
   ngOnInit(): void {
-  
 
   }
 
