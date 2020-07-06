@@ -29,6 +29,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   index = 0
   picIndex = 0
   page = 1
+  loadMusic = false
+  serverError = false
 
   tags = []
 
@@ -36,6 +38,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
+    const url = this.musics_api.getImageUrl('cover/Walker/Alan Walker-The Spectre.mp3')
+    console.log(url)
   }
 
 
@@ -72,19 +76,36 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
   generateMusicsList = (page) => {
+
+    this.loadMusic = true
+    this.serverError = false
+
     console.log("page = ", page)
     this.musics_api.getMusicsList(page)
     .subscribe(
       res => {
-        this.res = res
-        console.log(this.res) 
-        if(this.res.length > 0) {
-          this.res.forEach(musisObj => {
-            this.musicsList.push(musisObj)
-          });
-        }
+
+        setTimeout(() => {
+          //processing response-------
+          this.res = res
+          console.log(this.res) 
+          if(this.res.length > 0) {
+            this.res.forEach(musisObj => {
+              this.musicsList.push(musisObj)
+            });
+          }
+          this.loadMusic = false
+          //-----------------------
+          
+        }, 2000);
+
       },
-      err => console.error(err)
+      err => {
+        this.loadMusic = false
+        this.serverError = true
+        this.page--;
+        console.error(err)
+      }
     )
   }
 

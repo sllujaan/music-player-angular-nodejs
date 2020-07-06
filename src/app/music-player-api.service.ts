@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser'
 
 @Injectable({
   providedIn: 'root'
 })
 export class MusicPlayerApiService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
 
   httpUrl = `http://localhost:3000/list/`
   httpMusicUrl = `http://localhost:3000/audio/`
@@ -28,4 +29,13 @@ export class MusicPlayerApiService {
   getService() {
     return "music-player-service."
   }
+
+  getImageUrl(musicUrl) {
+    return (this.httpSeverUrl + musicUrl)
+  }
+
+  getSanitizedUrl(musicUrl) {
+    return this.sanitizer.bypassSecurityTrustStyle( this.getImageUrl(musicUrl) )
+  }
+
 }
