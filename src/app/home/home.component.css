@@ -361,7 +361,10 @@ h1{
 }
 
 
-
+.common-controls {
+    text-align: center;
+    margin-left: 230px;
+}
 
 
 @media only screen and (max-width: 700px) {
@@ -388,6 +391,10 @@ h1{
     .player-container-mini{
         width: 100%;
         
+    }
+    
+    .common-controls {
+        margin-left: 0;
     }
 }
 
@@ -486,6 +493,3 @@ h1{
 
 
 
-.common-controls {
-    text-align: center;
-}

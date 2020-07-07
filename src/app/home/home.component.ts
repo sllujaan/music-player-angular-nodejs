@@ -97,14 +97,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
           this.loadMusic = false
           //-----------------------
           
-        }, 2000);
+        }, 1000);
 
       },
       err => {
-        this.loadMusic = false
-        this.serverError = true
-        this.page--;
-        console.error(err)
+        setTimeout(() => {
+          this.loadMusic = false
+          this.serverError = true
+          this.page--;
+          console.error(err)
+        }, 1000);
       }
     )
   }

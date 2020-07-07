@@ -9,9 +9,9 @@
         <div *ngFor="let music of musicsList" >
             <!--music container------------------------------------>
         <div class="music-container">
-            <div class="picture" [ngStyle]="{'background-image':' url(' + musics_api.getImageUrl(music.imageUrl)+ ')'}" >
-                <!-- <img [src]="musics_api.httpSeverUrl+music.imageUrl" alt="photo" srcset="" class="picture" > -->
-                <div class="play"><i class="fas fa-play fa-1x"></i></div>
+            <div class="picture" >
+                <img [src]="musics_api.httpSeverUrl+music.imageUrl" alt="photo" srcset="" class="picture" >
+                <!-- <div class="play"><i class="fas fa-play fa-1x"></i></div> -->
             </div>
             <div class="name">{{music.musicName}}</div>
         </div>
@@ -24,7 +24,7 @@
         <div *ngIf="loadMusic" class="loading">loading...</div>
         <div *ngIf="serverError" class="serverError">sever error!!!</div>
 
-        <button *ngIf="(res && res.length > 0) && !loadMusic" (click)="generateMusicsList(page = page + 1)" >Load More!</button>
+        <button *ngIf="((res && res.length > 0) && (!loadMusic)) || serverError " (click)="generateMusicsList(page = page + 1)" >Load More!</button>
     </div>
 
 </div>
