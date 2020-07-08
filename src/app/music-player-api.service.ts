@@ -9,15 +9,26 @@ export class MusicPlayerApiService {
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
 
-  httpUrl = `http://localhost:3000/list/`
-  httpMusicUrl = `http://localhost:3000/audio/`
-  httpMusicTagUrl = `http://localhost:3000/music/tag/`
-  public httpSeverUrl = `http://localhost:3000/`
+  PRODUCTION = false
+
+  PRODUCTION_URL = `http://musicplayerpro.herokuapp.com/`
+  LOCAL_URL = `http://localhost:3000/`
+
+
+  UNIQUE_URL = this.PRODUCTION ?  (this.PRODUCTION_URL) : (this.LOCAL_URL)
+
+  musicsListUrl = this.UNIQUE_URL + 'list/'
+
 
   getMusicsList(page) {
-    return this.http.get(this.httpUrl + page)
+    return this.http.get(this.musicsListUrl + page)
   }
-  getMusic(musicName) {
+  getImageUrl(musicUrl) {
+    return (this.UNIQUE_URL + musicUrl)
+  }
+
+  
+  /* getMusic(musicName) {
     if(!musicName) throw Error("music name is required.")
     else return this.http.get(this.httpMusicUrl+musicName)
   }
@@ -28,14 +39,5 @@ export class MusicPlayerApiService {
 
   getService() {
     return "music-player-service."
-  }
-
-  getImageUrl(musicUrl) {
-    return (this.httpSeverUrl + musicUrl)
-  }
-
-  getSanitizedUrl(musicUrl) {
-    return this.sanitizer.bypassSecurityTrustStyle( this.getImageUrl(musicUrl) )
-  }
-
+  } */
 }

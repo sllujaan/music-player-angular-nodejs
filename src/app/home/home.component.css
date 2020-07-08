@@ -8,6 +8,11 @@
     --musics-container-top: 150px;
     --player-container-background-z-index: 1000;
     --player-container-z-index: 1200;
+    
+    
+    --z-index-music-container: 50;
+    --z-index-picture: 55;
+    --z-index-play-btn: 60;
 
 
 }
@@ -278,6 +283,9 @@ h1{
     align-items: center;
     justify-content: center;
     cursor: pointer;
+
+
+    z-index: var(--z-index-music-container);
 }
 
 .music-container:active {
@@ -298,6 +306,9 @@ h1{
     background-size: auto calc(100% - 50px);
     background-position: center;
     background-repeat: no-repeat;
+
+    z-index: var(--z-index-picture);
+
 }
 
 .play {
@@ -305,6 +316,9 @@ h1{
     width: 40px;
     height: 40px;
     border-radius: 100%;
+    position: absolute;
+    top:  -40px;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -313,6 +327,8 @@ h1{
     -webkit-box-shadow: 0px 1px 5px 0px rgba(161,161,161,1);
     -moz-box-shadow: 0px 1px 5px 0px rgba(161,161,161,1);
     box-shadow: 0px 1px 5px 0px rgba(161,161,161,1);
+
+    z-index: var(--z-index-play-btn);
 }
 
 .play i {
@@ -334,6 +350,8 @@ h1{
     
     width: 100%;
     padding: 0 10px;
+
+    position: relative;
 
     text-overflow: ellipsis;
     overflow: hidden;
@@ -483,6 +501,67 @@ h1{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*top bar content*/
+.top-bar-A {
+    background-color: orange;
+    overflow: auto;
+    white-space: nowrap;
+    text-align: center;
+
+    position: fixed;
+    top: 100px;
+    width: 100%;
+
+    visibility: hidden;
+}
+
+.top-bar-A .item {
+    display: inline-block;
+    background-color: orangered;
+    padding: 10px;
+    text-align: center;
+}
+
+.top-bar-A .item:hover {
+    background-color: gray;
+    color: black;
+    cursor: pointer;
+}
+
+.top-bar-A .item:focus {
+    background-color: black;
+    color: white;
+    outline: none;
+
+}
+.top-bar-A .item:active {
+    background-color: black;
+    color: white;
+}
+
+@media only screen and (max-width: 700px) {
+    .top-bar-A {
+        visibility: visible;
+    }
+}
+
+/*-----------------*/
 
 
 
