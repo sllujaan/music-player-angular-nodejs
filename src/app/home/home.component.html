@@ -10,12 +10,12 @@
             <!--music container------------------------------------>
         <div class="music-container" (click)="showPlayer($event)">
             <div class="picture" >
-                <img [src]="musics_api.UNIQUE_URL+music.imageUrl" alt="photo" srcset="" class="picture" >
+                <img id="contianer-image" [src]="musics_api.getImageUrl(music.imageUrl)" alt="photo" srcset="" class="picture" >
                 
             </div>
-            <div class="name">{{music.musicName}}
+            <div class="name">{{music.musicName}}</div>
             <!-- <div class="play"><i class="fas fa-play fa-1x"></i></div> -->
-            </div>
+            
         </div>
         <!------------------------------------------------------>
         </div>
@@ -102,7 +102,7 @@
             
             <!-- Title container--------------->
             <div class="title-bar">
-                <div class="title"><span>title a - title b - title c - title d - title e - title f - title g - title h - title - title - title</span></div>
+                <div class="title"><span id="player-name">title a - title b - title c - title d - title e - title f - title g - title h - title - title - title</span></div>
                 <div class="btns">
                     <i class="fas fa-window-minimize fa-1x" ></i>
                     <i class="fas fa-times fa-1x" (click)="hidePlayer($event)" ></i>
@@ -112,7 +112,7 @@
             <!-- Image container--------------->
             <div class="image-container">
                 <div class="image">
-                    <img src="assets/default.png" alt="photo" srcset="">
+                    <img id="play-image" src="assets/default.png" alt="photo" srcset="">
                 </div>
             </div>
 

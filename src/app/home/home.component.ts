@@ -126,16 +126,46 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
   showPlayer(e) {
+    //const nameElm = e.target.parentElement.querySelector('.name')
+    //const picElm = e.target.parentElement.querySelector('.picture')
 
-    console.log(e.target)
-    console.log(e.target.parentElement)
+    var nameElm
+    var picElm
+
+    //(e.target.src) ? (picElm = e.target.src) : (nameElm = e.target.innerText)
+
+    if(e.target.src) {
+      picElm = e.target.src
+      nameElm = e.target.parentElement.nextSibling.innerText
+      
+      console.log(picElm)
+      console.log(nameElm)
+    }
+    else {
+      nameElm = e.target.innerText
+      picElm = e.target.parentElement.querySelector('#contianer-image').src
+
+      console.log(picElm)
+      console.log(nameElm)
+    }
+
+    
+
 
     var player = this.playerContainer.nativeElement
+
     
+    var player_picElm = player.querySelector('#play-image')
+    var player_nameElm = player.querySelector('#player-name')
+
+
+    player_nameElm.innerText = nameElm
+    player_picElm.src = picElm
+    
+
     this.render.setStyle(player, 'visibility', 'visible')
     this.render.setStyle(player, 'opacity', '1')
     
-    console.log(player)
 
   }
   
