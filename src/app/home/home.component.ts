@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   tags = []
 
   @ViewChild('musicsContainer', {static: true}) musicsContainer: ElementRef
+  @ViewChild('playerContainer', {static: true}) playerContainer: ElementRef
 
   ngOnInit(): void {
 
@@ -109,6 +110,46 @@ export class HomeComponent implements OnInit, AfterViewInit {
         }, 1000);
       }
     )
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  showPlayer(e) {
+
+    console.log(e.target)
+    console.log(e.target.parentElement)
+
+    var player = this.playerContainer.nativeElement
+    
+    this.render.setStyle(player, 'visibility', 'visible')
+    this.render.setStyle(player, 'opacity', '1')
+    
+    console.log(player)
+
+  }
+  
+  hidePlayer(e) {
+
+    console.log(e.target)
+
+    var player = this.playerContainer.nativeElement
+    
+    this.render.setStyle(player, 'visibility', 'hidden')
+    this.render.setStyle(player, 'opacity', '0')
+
+    console.log(player)
+    
   }
 
 

@@ -652,7 +652,9 @@ h1{
     margin: auto;
     z-index: var(--player-container-z-index);
     
-    visibility: visible;
+    visibility: hidden;
+    opacity: 0;
+    
     padding: 0;
 
     display: flex;
@@ -671,6 +673,8 @@ h1{
 
     border-radius: 0px;
 
+
+    transition: all 1s;
 
 
 }

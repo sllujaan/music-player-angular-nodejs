@@ -8,7 +8,7 @@
 
         <div *ngFor="let music of musicsList" >
             <!--music container------------------------------------>
-        <div class="music-container">
+        <div class="music-container" (click)="showPlayer($event)">
             <div class="picture" >
                 <img [src]="musics_api.UNIQUE_URL+music.imageUrl" alt="photo" srcset="" class="picture" >
                 
@@ -98,14 +98,14 @@
 
 
         <!---Player containers--------------------------------------------->
-        <div class="player-container">
+        <div class="player-container" #playerContainer>
             
             <!-- Title container--------------->
             <div class="title-bar">
                 <div class="title"><span>title a - title b - title c - title d - title e - title f - title g - title h - title - title - title</span></div>
                 <div class="btns">
-                    <i class="fas fa-window-minimize fa-1x"></i>
-                    <i class="fas fa-times fa-1x"></i>
+                    <i class="fas fa-window-minimize fa-1x" ></i>
+                    <i class="fas fa-times fa-1x" (click)="hidePlayer($event)" ></i>
                 </div>
             </div>
             
