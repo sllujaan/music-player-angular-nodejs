@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DomSanitizer } from '@angular/platform-browser'
+import { environment } from 'src/environments/environment'
 
 @Injectable({
   providedIn: 'root'
 })
 export class MusicPlayerApiService {
 
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
+  constructor(private http: HttpClient) { }
 
-  PRODUCTION = false
+  PRODUCTION = true
+  
 
   PRODUCTION_URL = `http://musicplayerpro.herokuapp.com/`
   LOCAL_URL = `http://localhost:3000/`
@@ -41,3 +42,4 @@ export class MusicPlayerApiService {
     return "music-player-service."
   } */
 }
+
