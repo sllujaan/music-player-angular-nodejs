@@ -2,7 +2,7 @@
   "name": "music-player-angular",
   "version": "0.0.0",
   "main":"index.html",
-  "homepage":"https://sllujaan.github.io/music-player-angular-nodejs",
+  "homepage":"https://sllujaan.github.io",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
