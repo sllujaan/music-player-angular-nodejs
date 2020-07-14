@@ -543,11 +543,12 @@
 <!---Top bar content--------------------------------------------->
 <div class="top-bar-A">
 
-  <div class="item" >Recent</div><!--       This this for just removing margins from inline-block items.
-  --><div class="item" >All</div><!--
+  <div class="item" routerLink='recent' routerLinkActive='active-route' >Recent</div><!--       This this for just removing margins from inline-block items.
+  --><div class="item" routerLink='all' routerLinkActive='active-route' >All</div><!--
   --><div class="item" routerLink='album' routerLinkActive='active-route' >albums</div><!--
-  --><div class="item" >Artists</div><!--
-  --><div class="item" >Genres</div>
+  --><div class="item" routerLink='artist' routerLinkActive='active-route' >Artists</div><!--
+  --><div class="item" routerLink='genres' routerLinkActive='active-route' >Genres</div><!--
+  --><div class="item" routerLink='year' routerLinkActive='active-route' >Year</div>
 
 
   <!-- <div class="all">All</div>
@@ -562,11 +563,12 @@
 
 <!---side bar content--------------------------------------------->
 <div class="side-bar">
-  <div class="all">Recent</div>
-  <div class="recent">All</div>
+  <div class="all" routerLink='recent' routerLinkActive='active-route' >Recent</div>
+  <div class="recent" routerLink='all' routerLinkActive='active-route' >All</div>
   <div class="albums" routerLink='album' routerLinkActive='active-route' >albums</div>
-  <div class="artist">Artists</div>
-  <div class="genres">Genres</div>
+  <div class="artist" routerLink='artist' routerLinkActive='active-route' >Artists</div>
+  <div class="genres" routerLink='genres' routerLinkActive='active-route' >Genres</div>
+  <div class="year" routerLink='year' routerLinkActive='active-route' >Year</div>
 </div>
 <!--------------------------------------------------------------->
 

@@ -8,6 +8,11 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PlayerComponent } from './player/player.component';
 import { AlbumsComponent } from './albums/albums.component';
+import { AllComponent } from './all/all.component';
+import { RecentComponent } from './recent/recent.component';
+import { ArtistComponent } from './artist/artist.component';
+import { GenresComponent } from './genres/genres.component';
+import { YearComponent } from './year/year.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +20,12 @@ import { AlbumsComponent } from './albums/albums.component';
     HomeComponent,
     NotFoundComponent,
     PlayerComponent,
-    AlbumsComponent
+    AlbumsComponent,
+    AllComponent,
+    RecentComponent,
+    ArtistComponent,
+    GenresComponent,
+    YearComponent
   ],
   imports: [
     BrowserModule,

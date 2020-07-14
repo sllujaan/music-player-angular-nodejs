@@ -10,7 +10,7 @@ export class MusicPlayerApiService {
 
   constructor(private http: HttpClient) { }
 
-  PRODUCTION = false
+  PRODUCTION = true
   
 
   PRODUCTION_URL = `http://musicplayerpro.herokuapp.com/`

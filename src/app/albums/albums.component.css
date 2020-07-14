@@ -78,7 +78,7 @@
     overflow: hidden;
     white-space: nowrap;
 
-    z-index: var(--z-index-picture);
+    z-index: 40;
 }
 
 
