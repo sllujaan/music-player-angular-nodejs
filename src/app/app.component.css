@@ -7,11 +7,10 @@
     --side-bar-top: 50px;
     --musics-container-top: 150px;
     --player-container-background-z-index: 1000;
-    --player-container-z-index: 1200;
+    --player-container-z-index: 200;
     
     
     --z-index-music-container: 50;
-    --z-index-picture: 55;
     --z-index-play-btn: 60;
 
 
@@ -344,19 +343,6 @@ h1{
     background-color: grey;
 }
 
-.name {
-    background-color: teal;
-    height: 40px;
-    
-    width: 100%;
-    padding: 0 10px;
-
-    position: relative;
-
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}
 
 .player-container-mini{
     background-color: hotpink;
@@ -938,17 +924,6 @@ h1{
     background-color: grey;
 }
 
-.name {
-    background-color: teal;
-    height: 40px;
-
-    width: 100%;
-    padding: 0 10px;
-
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}
 
 .player-container-mini{
     background-color: hotpink;

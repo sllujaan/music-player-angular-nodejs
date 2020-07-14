@@ -8,11 +8,25 @@ import { MusicPlayerApiService } from './music-player-api.service';
 })
 export class AppComponent implements OnInit {
   title = 'music-player-angular';
-
+  
+  playerHidden = false
+  
   constructor(public musics_api: MusicPlayerApiService, private render: Renderer2) { }
   
   ngOnInit(): void {
-    throw new Error("Method not implemented.");
+    
+    this.musics_api.data$.subscribe(
+      res => {
+        console.log(res)
+        this.showPlayer(res)
+        if(!this.playerHidden) {
+          this.playerHidden = true
+          this.hidePlayer({})
+        }
+      },
+      err => console.error(err)
+    )
+
   }
 
   @ViewChild('playerContainer', {static: true}) playerContainer: ElementRef
@@ -32,6 +46,31 @@ export class AppComponent implements OnInit {
 
 
 
+
+
+  
+  showPlayer(obj) {
+
+    const {name, picUrl} = obj
+
+    console.log("obj == ",  obj)
+
+    var player = this.playerContainer.nativeElement
+
+    
+    var player_picElm = player.querySelector('#play-image')
+    var player_nameElm = player.querySelector('#player-name')
+
+
+    player_nameElm.innerText = name
+    player_picElm.src = picUrl
+    
+
+    this.render.setStyle(player, 'visibility', 'visible')
+    this.render.setStyle(player, 'opacity', '1')
+    
+
+  }
 
 
 }

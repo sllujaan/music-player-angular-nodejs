@@ -4,12 +4,9 @@
 :root{
     --body-z-index: 0;
     --player-z-index: 1000;
-    --title-h1-top: 10px;
-    --top-bar-top: 110px;
-    --side-bar-top: 50px;
+    
     --musics-container-top: 150px;
-    --player-container-background-z-index: 1000;
-    --player-container-z-index: 1200;
+    --z-index-picture: 55;
 
 
 }
@@ -69,7 +66,7 @@
 
 
 .name {
-    background-color: teal;
+    background-color: yellow;
     height: 40px;
     
     width: 100%;
@@ -80,6 +77,8 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+
+    z-index: var(--z-index-picture);
 }
 
 

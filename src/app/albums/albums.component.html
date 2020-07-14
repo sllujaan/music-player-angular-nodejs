@@ -8,7 +8,7 @@
 
         <div *ngFor="let music of musicsList" >
             <!--music container------------------------------------>
-        <div class="music-container" (click)="showPlayer($event)">
+        <div class="music-container" (click)="callParentToShowPlayer($event)">
             <div class="picture" >
                 <img id="contianer-image" [src]="musics_api.getImageUrl(music.imageUrl)" alt="photo" srcset="" class="picture" >
                 

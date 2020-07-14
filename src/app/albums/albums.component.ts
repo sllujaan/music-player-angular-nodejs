@@ -1,6 +1,5 @@
-import { Component, OnInit, Renderer2, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
 import { MusicPlayerApiService } from '../music-player-api.service';
-import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-albums',
@@ -13,7 +12,6 @@ export class AlbumsComponent implements OnInit {
 
   ngAfterViewInit(): void {
     console.warn("dom component is ready.")
-    console.log(this.appComponent)
 
     this.generateMusicsList(this.page)
 
@@ -39,13 +37,11 @@ export class AlbumsComponent implements OnInit {
 
   @ViewChild('musicsContainer', {static: true}) musicsContainer: ElementRef
   //@ViewChild('playerContainer', {static: true}) playerContainer: ElementRef
-  @Input()
-  appComponent: AppComponent
+  @Output() notifyParent: EventEmitter<any> = new EventEmitter();
+
 
 
   ngOnInit(): void {
-
-    
 
   }
 
@@ -131,8 +127,28 @@ export class AlbumsComponent implements OnInit {
 
 
 
-  showPlayer(e) {   
+  callParentToShowPlayer(e) {
 
+    var nameElm
+    var picElm
+
+    //(e.target.src) ? (picElm = e.target.src) : (nameElm = e.target.innerText)
+
+    if(e.target.src) {
+      picElm = e.target.src
+      nameElm = e.target.parentElement.nextSibling.innerText
+
+    }
+    else {
+      nameElm = e.target.innerText
+      picElm = e.target.parentElement.querySelector('#contianer-image').src
+
+
+    }
+
+
+
+    this.musics_api.changeData({name: nameElm, picUrl: picElm})
   }
 
 

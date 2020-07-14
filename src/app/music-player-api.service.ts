@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment'
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,17 +30,16 @@ export class MusicPlayerApiService {
   }
 
   
-  /* getMusic(musicName) {
-    if(!musicName) throw Error("music name is required.")
-    else return this.http.get(this.httpMusicUrl+musicName)
-  }
-  getTags(musicName) {
-    if(!musicName) throw Error("music name is required.")
-    else return this.http.get(this.httpMusicTagUrl+musicName)
+
+  //child to paretn with routeroutlet communication-----
+  private data = new BehaviorSubject({})
+  data$ = this.data.asObservable()
+
+  changeData(data: object) {
+    this.data.next(data)
   }
 
-  getService() {
-    return "music-player-service."
-  } */
+  //------------------------
+
 }
 
