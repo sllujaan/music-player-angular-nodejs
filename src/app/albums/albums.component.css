@@ -1,0 +1,108 @@
+
+
+
+:root{
+    --body-z-index: 0;
+    --player-z-index: 1000;
+    --title-h1-top: 10px;
+    --top-bar-top: 110px;
+    --side-bar-top: 50px;
+    --musics-container-top: 150px;
+    --player-container-background-z-index: 1000;
+    --player-container-z-index: 1200;
+
+
+}
+
+
+
+.musics-container {
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-left: 220px;
+    margin-top: 160px;
+    padding-bottom: 40px;
+
+
+    margin-top: 100px;
+}
+
+.music-container{
+    width: 150px;
+    background-color: white;
+    margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+
+    z-index: var(--z-index-music-container);
+}
+
+.music-container:active {
+    transform: scale(1.01);
+}
+
+
+
+.picture{
+    height: 150px;
+    width: 150px;
+    background-color: tomato;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    /*background-image: url("music_default.png");*/
+    background-size: auto calc(100% - 50px);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: var(--z-index-picture);
+
+}
+
+
+.name {
+    background-color: teal;
+    height: 40px;
+    
+    width: 100%;
+    padding: 0 10px;
+
+    position: relative;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+
+
+.common-controls {
+    text-align: center;
+    margin-left: 230px;
+}
+
+
+
+
+@media only screen and (max-width: 700px) {
+
+
+
+    .musics-container {
+        margin-top: 160px;
+        margin-left: 0;
+    }
+    
+    .common-controls {
+        margin-left: 0;
+    }
+}

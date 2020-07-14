@@ -1,13 +1,12 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Renderer2} from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
 import { MusicPlayerApiService } from '../music-player-api.service';
-import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-albums',
+  templateUrl: './albums.component.html',
+  styleUrls: ['./albums.component.css']
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class AlbumsComponent implements OnInit {
 
   constructor(public musics_api: MusicPlayerApiService, private render: Renderer2) { }
 
@@ -168,7 +167,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     
 
   }
-
 
 
 }

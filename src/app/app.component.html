@@ -532,4 +532,161 @@
 
 <!-- <h1 style="text-align: center;">Angular App</h1> -->
 
+
+
+
+
+
+
+
+<h1>Music Library</h1>
+<!---Top bar content--------------------------------------------->
+<div class="top-bar-A">
+
+  <div class="item" >Recent</div><!--       This this for just removing margins from inline-block items.
+  --><div class="item" >All</div><!--
+  --><div class="item" routerLink='album' routerLinkActive='active-route' >albums</div><!--
+  --><div class="item" >Artists</div><!--
+  --><div class="item" >Genres</div>
+
+
+  <!-- <div class="all">All</div>
+  <div class="recent">Recent</div>
+  <div class="albums">Albums</div>
+  <div class="artist">Artists</div>
+  <div class="genres">Genres</div> -->
+
+  
+</div>
+<!--------------------------------------------------------------->
+
+<!---side bar content--------------------------------------------->
+<div class="side-bar">
+  <div class="all">Recent</div>
+  <div class="recent">All</div>
+  <div class="albums" routerLink='album' routerLinkActive='active-route' >albums</div>
+  <div class="artist">Artists</div>
+  <div class="genres">Genres</div>
+</div>
+<!--------------------------------------------------------------->
+
+
+<!--background-image: url('{{ (musics_api.httpSeverUrl + music.imageUrl) }}');-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---------------------------------------------------------- player containers----------------------------------------------->
+
+
+
+
+      <!---Player containers--------------------------------------------->
+      <div class="player-container" #playerContainer>
+          
+          <!-- Title container--------------->
+          <div class="title-bar">
+              <div class="title"><span id="player-name">title a - title b - title c - title d - title e - title f - title g - title h - title - title - title</span></div>
+              <div class="btns">
+                  <i class="fas fa-window-minimize fa-1x" ></i>
+                  <i class="fas fa-times fa-1x" (click)="hidePlayer($event)" ></i>
+              </div>
+          </div>
+          
+          <!-- Image container--------------->
+          <div class="image-container">
+              <div class="image">
+                  <img id="play-image" src="assets/default.png" alt="photo" srcset="">
+              </div>
+          </div>
+
+          <!--Control Container-------------->
+          <div class="controls-container">
+              
+              <!--controls--------------------------------------------------------->
+              <div class="player-controls">
+
+                  <!--progress bar contols---------------------------------->
+                  <div class="progress-bar">
+                      
+                      <div class="time-container">
+                          <span class="duration current-time">00:00</span>
+                          <span class="separater">/</span>
+                          <span class="duration total-time">00:00</span>
+                      </div>
+                      <div class="seeker-container">
+                          <div class="seeker">
+                              <div class="progress"></div>
+                              <div class="buffer"></div>
+                          </div>
+                      </div>
+          
+                  </div>
+          
+          
+                  <!--Player control buttons contols---------------------------------->
+                  <div class="btns">
+                      <div class="btn-loop"><i class="fas fa-redo fa-2x"></i></div>
+                      <div class="btn-prev"><i class="fas fa-backward fa-2x"></i></div>
+                      <div class="btn-play-pause"><i class="fas fa-play fa-2x"></i></div>
+                      <div class="btn-next"><i class="fas fa-forward fa-2x"></i></div>
+                      <div class="btn-shuffle"><i class="fas fa-random fa-2x"></i></div>
+                  </div>
+                  <!------------------------------------------------------------------>
+          
+                  <div class="volume-container seeker-container">
+                      <div class="seeker">
+                          <div class="progress"></div>
+                      </div>
+                  </div>
+          
+          
+              </div>
+              
+              <!---------------------------------------------------------------------------->
+          </div>
+          
+
+      </div>
+      <!----------------------------------------------------------------------------------------------->
+
+      <!-- <div class="player-container-background"></div> -->
+      
+
+
+<!-- ----------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <router-outlet></router-outlet>
