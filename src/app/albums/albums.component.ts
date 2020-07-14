@@ -1,5 +1,6 @@
-import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef, Input } from '@angular/core';
 import { MusicPlayerApiService } from '../music-player-api.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-albums',
@@ -12,8 +13,11 @@ export class AlbumsComponent implements OnInit {
 
   ngAfterViewInit(): void {
     console.warn("dom component is ready.")
+    console.log(this.appComponent)
 
     this.generateMusicsList(this.page)
+
+    
 
   }
 
@@ -34,12 +38,15 @@ export class AlbumsComponent implements OnInit {
   tags = []
 
   @ViewChild('musicsContainer', {static: true}) musicsContainer: ElementRef
-  @ViewChild('playerContainer', {static: true}) playerContainer: ElementRef
+  //@ViewChild('playerContainer', {static: true}) playerContainer: ElementRef
+  @Input()
+  appComponent: AppComponent
+
 
   ngOnInit(): void {
 
-    const url = this.musics_api.getImageUrl('cover/Walker/Alan Walker-The Spectre.mp3')
-    console.log(url)
+    
+
   }
 
 
@@ -124,47 +131,7 @@ export class AlbumsComponent implements OnInit {
 
 
 
-  showPlayer(e) {
-    //const nameElm = e.target.parentElement.querySelector('.name')
-    //const picElm = e.target.parentElement.querySelector('.picture')
-
-    var nameElm
-    var picElm
-
-    //(e.target.src) ? (picElm = e.target.src) : (nameElm = e.target.innerText)
-
-    if(e.target.src) {
-      picElm = e.target.src
-      nameElm = e.target.parentElement.nextSibling.innerText
-      
-      console.log(picElm)
-      console.log(nameElm)
-    }
-    else {
-      nameElm = e.target.innerText
-      picElm = e.target.parentElement.querySelector('#contianer-image').src
-
-      console.log(picElm)
-      console.log(nameElm)
-    }
-
-    
-
-
-    var player = this.playerContainer.nativeElement
-
-    
-    var player_picElm = player.querySelector('#play-image')
-    var player_nameElm = player.querySelector('#player-name')
-
-
-    player_nameElm.innerText = nameElm
-    player_picElm.src = picElm
-    
-
-    this.render.setStyle(player, 'visibility', 'visible')
-    this.render.setStyle(player, 'opacity', '1')
-    
+  showPlayer(e) {   
 
   }
 
