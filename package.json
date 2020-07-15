@@ -2,7 +2,7 @@
   "name": "music-player-angular",
   "version": "0.0.0",
   "main":"index.html",
-  "homepage":"https://sllujaan.github.io",
+  "homepage":"https://sllujaan.github.io/music-player-angular-nodejs",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist/music-player-angular"
   },
   "private": true,
   "dependencies": {
