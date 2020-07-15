@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment'
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -13,7 +12,7 @@ export class MusicPlayerApiService {
   PRODUCTION = true
   
 
-  PRODUCTION_URL = `http://musicplayerpro.herokuapp.com/`
+  PRODUCTION_URL = `https://musicplayerpro.herokuapp.com/`
   LOCAL_URL = `http://localhost:3000/`
 
 
