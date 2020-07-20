@@ -1,14 +1,12 @@
 
 
 
-:root{
+::ng-deep :root{
     --body-z-index: 0;
     --player-z-index: 1000;
     
     --musics-container-top: 150px;
-    --z-index-picture: 55;
-
-
+    --z-index-picture: 40;
 }
 
 
@@ -78,7 +76,7 @@
     overflow: hidden;
     white-space: nowrap;
 
-    z-index: 40;
+    z-index: var(--z-index-picture);
 }
 
 
