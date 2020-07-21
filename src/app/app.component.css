@@ -12,6 +12,9 @@
 
     --z-index-top-bar-A: 50;
 
+    --font-color: orangered;
+    --menu-color: rgb(68, 68, 68);
+
 
 }
 
@@ -33,12 +36,16 @@
 
 .side-bar div {
     padding: 10px;
-    background-color: orangered;
+    /* background-color: orangered; */
     cursor: pointer;
 }
 
 .side-bar div:hover {
-    background-color: grey;
+    /* background-color: grey; */
+}
+
+.side-bar div:focus {
+    outline: none;
 }
 
 
@@ -48,7 +55,8 @@
 
 
 h1{
-    background-color: #00e676;
+    /* background-color: #00e676; */
+    color: var(--font-color);
     padding: 10px;
     margin: 0;
     position: fixed;
@@ -74,7 +82,8 @@ h1{
 
 /*top bar content--------------------------------------------------*/
 .top-bar-A {
-    background-color: orange;
+    background-color: var(--menu-color);
+    color: orangered;
     overflow: auto;
     white-space: nowrap;
     text-align: center;
@@ -92,13 +101,13 @@ h1{
 
 .top-bar-A .item {
     display: inline-block;
-    background-color: orangered;
+    /* background-color: orangered; */
     padding: 10px;
     text-align: center;
 }
 
 .top-bar-A .item:hover {
-    background-color: gray;
+    /* background-color: gray; */
     color: black;
     cursor: pointer;
 }
@@ -617,9 +626,8 @@ h1{
 
 
 .active-route {
-    background: gray;
-    color: yellow;
-    padding: 0;
+    background-color: var(--font-color);
+    color: var(--menu-color);
 }
 
 
