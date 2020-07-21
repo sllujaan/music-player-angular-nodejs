@@ -110,7 +110,7 @@ h1{
 
 .top-bar-A .item:hover {
     /* background-color: gray; */
-    color: black;
+    /* color: black; */
     cursor: pointer;
 }
 
