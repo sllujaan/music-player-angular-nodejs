@@ -7,12 +7,17 @@
     
     --musics-container-top: 150px;
     --z-index-picture: 40;
+
+    --font-color: orangered;
+    --menu-color: rgb(68, 68, 68);
+
+    --border-radius-musics-container: 10px;
 }
 
 
 
 .musics-container {
-    background-color: green;
+    /* background-color: green; */
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -37,6 +42,10 @@
 
 
     z-index: var(--z-index-music-container);
+
+    border: 1px solid wheat;
+    border-radius: var(--border-radius-musics-container);
+
 }
 
 .music-container:active {
@@ -60,6 +69,9 @@
 
     z-index: var(--z-index-picture);
 
+    border-top-left-radius: var(--border-radius-musics-container);
+    border-top-right-radius: var(--border-radius-musics-container);
+
 }
 
 
@@ -77,6 +89,9 @@
     white-space: nowrap;
 
     z-index: var(--z-index-picture);
+
+    border-bottom-left-radius: var(--border-radius-musics-container);
+    border-bottom-right-radius: var(--border-radius-musics-container);
 }
 
 
