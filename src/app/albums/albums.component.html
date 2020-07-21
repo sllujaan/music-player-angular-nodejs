@@ -23,7 +23,11 @@
     </div>
 
     <div class="common-controls">
-        <div *ngIf="loadMusic" class="loading">loading...</div>
+        <div *ngIf="loadMusic" class="loading-music">
+            <svg  class="loading" width="40" height="40"  xmlns="http://www.w3.org/2000/svg">
+                <circle unicode="&#xf009;" id="loadingCircle" cx="20" cy="20" r="15"/>
+              </svg>
+        </div>
         <div *ngIf="serverError" class="serverError">sever error!!!</div>
 
         <button *ngIf="((res && res.length > 0) && (!loadMusic)) || serverError " (click)="generateMusicsList(page = page + 1)" class="load-more">Load More!</button>
