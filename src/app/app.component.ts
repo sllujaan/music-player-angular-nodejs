@@ -73,4 +73,29 @@ export class AppComponent implements OnInit {
   }
 
 
+
+
+  playPauseClass = 'fas fa-play fa-2x'
+
+  clickPlayPause(e) {
+    console.log(e.target.className)
+    const className = e.target.className;
+    (className === 'fas fa-play fa-2x') ? (this.playPauseClass = 'fas fa-pause fa-2x') : (this.playPauseClass = 'fas fa-play fa-2x');
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

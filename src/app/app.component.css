@@ -585,3 +585,11 @@ h1{
 
 
 
+/* player control buttons-------------- */
+.btns > div > i {
+    cursor: pointer;
+}
+
+/* ---------------------------------- */
+
+

@@ -648,7 +648,7 @@
                   <div class="btns">
                       <div class="btn-loop"><i class="fas fa-redo fa-2x"></i></div>
                       <div class="btn-prev"><i class="fas fa-backward fa-2x"></i></div>
-                      <div class="btn-play-pause"><i class="fas fa-play fa-2x"></i></div>
+                      <div class="btn-play-pause"><i [ngClass]="playPauseClass" (click)="clickPlayPause($event)"></i></div>
                       <div class="btn-next"><i class="fas fa-forward fa-2x"></i></div>
                       <div class="btn-shuffle"><i class="fas fa-random fa-2x"></i></div>
                   </div>
