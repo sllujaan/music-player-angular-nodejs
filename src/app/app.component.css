@@ -580,7 +580,7 @@ h1{
 
 .active-route {
     background-color: var(--font-color);
-    color: var(--menu-color);
+    color: black;
 }
 
 

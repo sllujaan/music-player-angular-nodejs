@@ -76,7 +76,7 @@
 
 
 .name {
-    background-color: yellow;
+    background-color: var(--font-color);
     height: 40px;
     
     width: 100%;
@@ -117,4 +117,12 @@
     .common-controls {
         margin-left: 0;
     }
+}
+
+
+.load-more {
+    border: none;
+    background-color: var(--font-color);
+    padding: 10px 20px;
+    cursor: pointer;
 }
