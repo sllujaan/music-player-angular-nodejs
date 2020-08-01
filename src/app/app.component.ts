@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
   constructor(public musics_api: MusicPlayerApiService, private render: Renderer2) { }
   
   ngOnInit(): void {
+
+    this.showPlayer({name:"undef", picUrl:"undef"})
     
     this.musics_api.data$.subscribe(
       res => {
@@ -37,8 +39,8 @@ export class AppComponent implements OnInit {
 
     var player = this.playerContainer.nativeElement
     
-    this.render.setStyle(player, 'visibility', 'hidden')
-    this.render.setStyle(player, 'opacity', '0')
+    //this.render.setStyle(player, 'visibility', 'hidden')
+    this.render.setStyle(player, 'top', '100%')
 
     console.log(player)
     
@@ -66,8 +68,8 @@ export class AppComponent implements OnInit {
     player_picElm.src = picUrl
     
 
-    this.render.setStyle(player, 'visibility', 'visible')
-    this.render.setStyle(player, 'opacity', '1')
+    //this.render.setStyle(player, 'visibility', 'visible')
+    this.render.setStyle(player, 'top', '0')
     
 
   }

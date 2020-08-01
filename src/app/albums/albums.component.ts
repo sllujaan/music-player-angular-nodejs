@@ -79,28 +79,22 @@ export class AlbumsComponent implements OnInit {
 
 
   generateMusicsList = (page) => {
-
     this.loadMusic = true
     this.serverError = false
-
-    console.log("page = ", page)
+    //console.log("page = ", page)
     this.musics_api.getMusicsList(page)
     .subscribe(
       res => {
-
-        setTimeout(() => {
           //processing response-------
           this.res = res
-          console.log(this.res) 
-          if(this.res.length > 0) {
+          //console.log(this.res) 
+          if(Array.isArray(this.res) && this.res.length > 0) {
             this.res.forEach(musisObj => {
               this.musicsList.push(musisObj)
             });
           }
           this.loadMusic = false
-          //-----------------------
-          
-        }, 1000);
+          //----------------------
 
       },
       err => {
@@ -108,7 +102,7 @@ export class AlbumsComponent implements OnInit {
           this.loadMusic = false
           this.serverError = true
           this.page--;
-          console.error(err)
+          //console.error(err)
         }, 1000);
       }
     )

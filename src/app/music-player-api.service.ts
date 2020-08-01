@@ -9,11 +9,11 @@ export class MusicPlayerApiService {
 
   constructor(private http: HttpClient) { }
 
-  PRODUCTION = true
+  PRODUCTION = false
   
 
   PRODUCTION_URL = `https://musicplayerpro.herokuapp.com/`
-  LOCAL_URL = `http://localhost:3000/`
+  LOCAL_URL = `http://localhost:8080/`
 
 
   UNIQUE_URL = this.PRODUCTION ?  (this.PRODUCTION_URL) : (this.LOCAL_URL)
@@ -25,12 +25,13 @@ export class MusicPlayerApiService {
     return this.http.get(this.musicsListUrl + page)
   }
   getImageUrl(musicUrl) {
-    return (this.UNIQUE_URL + musicUrl)
+    if(musicUrl === '') return ("/assets/default.png");
+    return (this.musicsListUrl + musicUrl);
   }
 
   
 
-  //child to paretn with routeroutlet communication-----
+  //child to parent with routeroutlet communication-----
   private data = new BehaviorSubject({})
   data$ = this.data.asObservable()
 

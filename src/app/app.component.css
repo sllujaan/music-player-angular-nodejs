@@ -202,8 +202,8 @@ h1{
     margin: auto;
     z-index: var(--player-container-z-index);
     
-    visibility: hidden;
-    opacity: 0;
+    /* visibility: hidden; */
+    /* opacity: 0; */
     
     padding: 0;
 
@@ -224,7 +224,11 @@ h1{
     border-radius: 0px;
 
 
-    transition: all 1s;
+    transition: all .5s;
+
+    visibility: visible;
+
+    top: 100%;
 
 
     /* z-index: 4000; */
