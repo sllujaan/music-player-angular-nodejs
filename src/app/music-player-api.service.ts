@@ -25,7 +25,7 @@ export class MusicPlayerApiService {
     return this.http.get(this.musicsListUrl + page)
   }
   getImageUrl(musicUrl) {
-    if(musicUrl === '') return ("/assets/default.png");
+    if(musicUrl === '') return ("assets/default.png");
     return (this.musicsListUrl + musicUrl);
   }
 
