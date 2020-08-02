@@ -608,7 +608,7 @@
           <div class="title-bar">
               <div class="title"><span id="player-name">title a - title b - title c - title d - title e - title f - title g - title h - title - title - title</span></div>
               <div class="btns">
-                  <i class="fas fa-window-minimize fa-1x" ></i>
+                  <!-- <i class="fas fa-window-minimize fa-1x" ></i> -->
                   <i class="fas fa-times fa-1x" (click)="hidePlayer($event)" ></i>
               </div>
           </div>
@@ -616,7 +616,10 @@
           <!-- Image container--------------->
           <div class="image-container">
               <div class="image">
-                  <img id="play-image" src="assets/default.png" alt="photo" srcset="">
+                  <div class="container">
+                    <img id="play-image" src="assets/default.png" alt="photo" srcset="">
+                  </div>
+                  
               </div>
           </div>
 
@@ -671,6 +674,17 @@
       <!----------------------------------------------------------------------------------------------->
 
       <!-- <div class="player-container-background"></div> -->
+
+
+      <!------------mini player container------------->
+      <div class="container-mini-player" (click)="showPlayer($event, {})">
+        <div class="image-mini">
+            <img src="assets/default.png" alt="">
+        </div>
+        <div class="play-pause"><i [ngClass]="playPauseClass" (click)="clickPlayPause($event)"></i></div>
+        <div class="title">This is the title song.</div>
+      </div>
+      <!---------------------------------------------->
       
 
 

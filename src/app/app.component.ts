@@ -15,12 +15,12 @@ export class AppComponent implements OnInit {
   
   ngOnInit(): void {
 
-    this.showPlayer({name:"undef", picUrl:"undef"})
+    this.showPlayer(null, {name:"undef", picUrl:"undef"})
     
     this.musics_api.data$.subscribe(
       res => {
         console.log(res)
-        this.showPlayer(res)
+        this.showPlayer(null, res)
         if(!this.playerHidden) {
           this.playerHidden = true
           this.hidePlayer({})
@@ -51,9 +51,14 @@ export class AppComponent implements OnInit {
 
 
   
-  showPlayer(obj) {
+  showPlayer(e, obj) {
 
-    const {name, picUrl} = obj
+    //dont show player if clicked on play or pause button.
+    if( e && (e.target.classList.contains('fa-pause') || e.target.classList.contains('fa-play'))) return;
+
+    var {name, picUrl} = obj
+    if(!name) name = ''
+    if(!picUrl) picUrl = ''
 
     console.log("obj == ",  obj)
 
@@ -80,6 +85,7 @@ export class AppComponent implements OnInit {
   playPauseClass = 'fas fa-play fa-2x'
 
   clickPlayPause(e) {
+    e.preventDefault();
     console.log(e.target.className)
     const className = e.target.className;
     (className === 'fas fa-play fa-2x') ? (this.playPauseClass = 'fas fa-pause fa-2x') : (this.playPauseClass = 'fas fa-play fa-2x');

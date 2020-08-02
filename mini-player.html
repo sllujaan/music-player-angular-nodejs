@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mini-player</title>
+</head>
+
+<style>
+
+    :root{
+        
+        --z-index-mini-player: 200;
+    }
+
+    body{
+        margin: 0;
+    }
+
+    .container-mini-player {
+        background-color: orange;
+        position: fixed;
+        height: 50px;
+        width: 100%;
+        bottom: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        z-index: var(--z-index-mini-player);
+        
+    }
+
+    .image-mini {
+        background-color: orangered;
+        height: 100%;
+        width: 50px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .image-mini img {
+        height: 100%;
+        width: auto;
+    }
+
+    .play-pause {
+        background-color: yellow;
+        height: 100%;
+        width: 50px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title {
+        background-color: gray;
+        width: 100%;
+        
+        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        
+    }
+
+</style>
+
+<body>
+
+    <div class="container-mini-player">
+        <div class="image-mini">
+            <img src="src/assets/default.png" alt="">
+        </div>
+        <div class="play-pause">play</div>
+        <div class="title">title aaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbccccccccccccccc</div>
+    </div>
+    
+</body>
+</html>

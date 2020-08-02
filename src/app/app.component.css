@@ -1,7 +1,10 @@
 
-::ng-deep :root{
+:host{
+    
+    
     --body-z-index: 0;
     --player-z-index: 1000;
+    --z-index-mini-player: 900;
     --musics-container-top: 150px;
     --player-container-background-z-index: 1000;
     --player-container-z-index: 1000;
@@ -13,11 +16,8 @@
     --z-index-top-bar-A: 50;
 
     --font-color: orangered;
-    --menu-color: rgb(68, 68, 68);
-
-
+    --menu-color: rgb(39, 39, 39);
 }
-
 
 
 
@@ -57,7 +57,7 @@
 
 h1{
     /* background-color: #00e676; */
-    background-color: black;
+    background-color: var(--menu-color);
     color: var(--font-color);
     padding: 10px;
     margin: 0;
@@ -85,7 +85,7 @@ h1{
 /*top bar content--------------------------------------------------*/
 .top-bar-A {
     background-color: var(--menu-color);
-    color: orangered;
+    color: var(--font-color);
     overflow: auto;
     white-space: nowrap;
     text-align: center;
@@ -99,6 +99,8 @@ h1{
     user-select: none;
 
     z-index: var(--z-index-top-bar-A);
+
+    border-top: 1px solid var(--font-color);
 }
 
 .top-bar-A .item {
@@ -257,12 +259,6 @@ h1{
     padding: 10px;
 
 
-
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-
-
 }
 
 .player-container .title-bar .title span {
@@ -272,8 +268,10 @@ h1{
     background-color: initial;
     width: 100%;
 
-
-    transition: all 1s;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .textAnimated {
@@ -326,19 +324,29 @@ h1{
     background-color: initial;
 
     /* background-image: url("./assets/default.png"); */
-    background-size: auto 100%;
+    /* background-size: auto 100%;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
     text-align: center;
     overflow: hidden;
 
     display: flex;
     justify-content: center;
+    align-items: center;
+
+    /* background-color: orange; */
     
 
 }
 
-.player-container .image-container .image img {
+.player-container .image-container .image .container {
+    /* background-color: orangered; */
+    height: 400px;
+    width: 400px;
+
+}
+
+.player-container .image-container .image .container img {
     height: 100%;
     width: auto;
 }
@@ -597,3 +605,69 @@ h1{
 /* ---------------------------------- */
 
 
+
+
+
+
+/*-------------------------------mini player css-----------------------------------------*/
+.container-mini-player {
+    /* background-color: orange; */
+    background-color: var(--menu-color);
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    bottom: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: var(--z-index-mini-player);
+
+    border-top: 1px solid var(--font-color);
+
+    cursor: pointer;
+    
+}
+
+.image-mini {
+    /* background-color: orangered; */
+    height: 100%;
+    width: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image-mini img {
+    height: 100%;
+    width: auto;
+}
+
+.play-pause {
+    /* background-color: yellow; */
+    color: white;
+    height: 100%;
+    width: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.play-pause i {
+    cursor: pointer;
+}
+
+.container-mini-player .title {
+    /* background-color: gray; */
+    color: white;
+    width: 100%;
+    
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+}
+/*--------------------------------------------------------------------------------------*/
