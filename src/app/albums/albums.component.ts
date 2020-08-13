@@ -13,7 +13,8 @@ export class AlbumsComponent implements OnInit {
   ngAfterViewInit(): void {
     console.warn("dom component is ready.")
 
-    this.generateMusicsList(this.page)
+    this.DOMLoaded = true;
+    this.generateMusicsList(this.page);
 
     
 
@@ -32,6 +33,7 @@ export class AlbumsComponent implements OnInit {
   page = 1
   loadMusic = false
   serverError = false
+  DOMLoaded = false
 
   tags = []
 

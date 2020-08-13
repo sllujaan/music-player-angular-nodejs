@@ -1,7 +1,6 @@
 
 
-
-::ng-deep :root{
+:host{
     --body-z-index: 0;
     --player-z-index: 1000;
     
@@ -12,6 +11,11 @@
     --menu-color: rgb(68, 68, 68);
 
     --border-radius-musics-container: 10px;
+}
+
+
+*{
+    user-select: none;
 }
 
 
@@ -98,6 +102,7 @@
 
 
 .common-controls {
+    background-color: orange;
     text-align: center;
     margin-left: 230px;
 }
@@ -136,6 +141,13 @@
     color: red;
     padding: 10px 20px;
     
+    font-size: xx-large;
+}
+
+.DomLoading {
+    color: red;
+    padding: 10px 20px;
+
     font-size: xx-large;
 }
 
