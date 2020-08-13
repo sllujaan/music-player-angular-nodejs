@@ -602,7 +602,10 @@
 
 
       <!---Player containers--------------------------------------------->
-      <div class="player-container" #playerContainer>
+      <div class="player-container" #playerContainer 
+      (mouseup)="_onMouseUp_playerContainer($event)"
+      (mousemove)="_onMouseMove_playerContainer($event)"
+      >
           
           <!-- Title container--------------->
           <div class="title-bar">
@@ -637,12 +640,32 @@
                           <span class="separater">/</span>
                           <span class="duration total-time">00:00</span>
                       </div>
-                      <div class="seeker-container">
+                      <!-- <div class="seeker-container">
                           <div class="seeker">
                               <div class="progress"></div>
                               <div class="buffer"></div>
                           </div>
+                      </div> -->
+
+                      <!---------------- seeker container content----------- -->
+                      <div class="seeker-container" #seeker_container
+                      (click)="_onClick_seekerContainer($event)"
+                      (mousedown)="_onMouseDown_seekerContainer($event)"
+                      (mousemove)="_onMouseMove_seekerContainer($event)"
+                      (mouseup)="_onMouseUp_seekerContainer($event)"
+                      >
+
+                        <div class="seeker" style="position: relative;">
+                            <div class="progress" style="width: 20%;" #progress></div>
+                            <div id="buffer-seeker" class="buffer" style="left: 0%; width: 20%;" #buffer_seeker></div>
+                            
+                        </div>
+                        <div id="dot-circle" class="dot-circle" style="width: 18px;" #dot_circle></div>
+                        
+                        
                       </div>
+                      <!-- ---------------------------- -------------------- -->
+
           
                   </div>
           
@@ -691,9 +714,12 @@
 <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
 
-
-
-
+<!------------ sample audio----------->
+<div class="sample-audio">
+  <audio id="video"
+    controls></audio>
+</div>
+<!----------------------->
 
 
 

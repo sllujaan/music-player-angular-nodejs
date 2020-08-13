@@ -17,6 +17,8 @@
 
     --font-color: orangered;
     --menu-color: rgb(39, 39, 39);
+
+    --z-index-sample-audio: 2000;
 }
 
 
@@ -452,7 +454,7 @@ h1{
 
 /*--------------------- seeker css ------------------------*/
 
-
+/* 
 
 :root {
     --z-index-seeker: 100;
@@ -481,7 +483,7 @@ h1{
 
 .seeker-container > .seeker {
     /* position: relative; */
-    background-color: lightgray;
+/*   background-color: lightgray;
     width: 100%;
     height: 5px;
 
@@ -519,7 +521,7 @@ h1{
 
 .seeker-container > .seeker > .buffer {
     /* position: absolute; */
-    background-color: blueviolet;
+ /*   background-color: blueviolet;
     width: 40%;
     height: 5px;
 
@@ -540,7 +542,7 @@ h1{
 
 
 /*--------------------- seeker css ------------------------*/
-
+/*
 .player-controls > .volume-container {
     margin: 10px 0;
     width: 50%;
@@ -549,7 +551,7 @@ h1{
 
 
 .player-controls > .volume-container > .seeker {
-        /* position: relative; */
+        /* position: relative; *//*
         background-color: lightgray;
         width: 100%;
         height: 5px;
@@ -581,12 +583,84 @@ h1{
     right: -9px;
     border-radius: 100%;
 }
-
+ */
 
 
 /* ---------------------------------------------------- */
 
 /* --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+/*new seeker css---------------------------------------------------*/
+
+.seeker-container {
+    background-color: orange;
+    position: relative;
+    cursor: pointer;
+}
+
+.seeker-container > .dot-circle {
+    background-color: green;
+    position: absolute;
+    height: 18px;
+    width: 18px;
+
+    border-radius: 100%;
+    top: -6px;
+    left: -6%;
+
+    z-index: var(--z-index-dot-circle);
+}
+
+.seeker-container > .seeker {
+    background-color: lightgray;
+    width: 100%;
+    height: 5px;
+
+    /* border: 1px solid black; */
+
+    overflow: hidden;
+}
+
+.seeker-container > .seeker >  .progress {
+    position: absolute;
+    background-color: red;
+    width: 40%;
+    height: 5px;
+
+    z-index: var(--z-index-progress);
+}
+
+
+/* buffer code is currently not being used.----------------------- */
+.buffer {
+    /* position: absolute; */
+    background-color: blueviolet;
+    position: absolute;
+    width: 20px;
+    height: 100%;
+
+    top: 0;
+
+    overflow: hidden;
+
+
+    z-index: var(--z-index-buffer);
+}
+/* -----------------------.----------------------- */
+
+/* -----------------------.----------------------- */
+
+
+
 
 
 
@@ -674,3 +748,16 @@ h1{
     
 }
 /*--------------------------------------------------------------------------------------*/
+
+
+/* sample audio */
+.sample-audio {
+    width: 100%;
+    background-color: green;
+    text-align: center;
+    top: 50%;
+
+    position: fixed;
+    z-index: var(--z-index-sample-audio);
+
+}

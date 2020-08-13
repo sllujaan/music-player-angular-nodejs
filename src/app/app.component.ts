@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { MusicPlayerApiService } from './music-player-api.service';
 
 @Component({
@@ -7,6 +7,21 @@ import { MusicPlayerApiService } from './music-player-api.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
+  ngAfterViewInit() {
+    console.log('dom loaded');
+    console.log(this.seeker_container.nativeElement);
+  }
+
+
+  @ViewChild('seeker_container', {static: true}) seeker_container: ElementRef;
+  @ViewChild('seeker_buffer', {static: true}) seeker_buffer: ElementRef;
+  @ViewChild('progress', {static: true}) progress: ElementRef;
+  @ViewChild('dot_circle', {static: true}) dot_circle: ElementRef;
+
+
+
+
   title = 'music-player-angular';
   
   playerHidden = false
@@ -99,11 +114,96 @@ export class AppComponent implements OnInit {
 
 
 
+  /*------------------------------seeker container content-----------------------------*/
+  
+  // seeker container mouse events-----------------------
+  _onClick_seekerContainer(e) {
+    console.log(e);
+    
+    console.log(this.getSeekerContainerWidth());
+  }
+
+  _onMouseMove_seekerContainer(e) {
+
+  }
+
+  _onMouseDown_seekerContainer(e) {
+
+  }
+
+  _onMouseUp_seekerContainer(e) {
+
+  }
+
+  //  player container mouse events---------------------------
+
+  _onMouseUp_playerContainer(e) {
+
+  }
+
+  _onMouseMove_playerContainer(e) {
+    
+  }
+
+
+  //touch events-------------------------------------------
+  _onTouchStart_seekerContainer(e) {
+  
+  }
+
+  _onTouchMove_seekerContainer(e) {
+    
+  }
+
+  _onTouchCancel_seekerContainer(e) {
+    
+  }
+
+  _onTouchEnd_seekerContainer(e) {
+    
+  }
+  
+  _onTouchStart_playerContainer(e) {
+    console.log(e)
+  }
+
+  _onTouchEnd_playerContainer(e) {
+    
+  }
+  
+  
+  //window resize event---------------
+  @HostListener('window:resize', ['$event'])
+  _onWindowResize(e) {
+    console.log(e)
+  }
+  //-------------------------
 
 
 
 
 
+
+
+  //-----------------utitiliy functions--------------------------------------
+  
+  getSeekerContainerWidth() {
+    var container = this.seeker_container.nativeElement
+    const complStyles = window.getComputedStyle(container);
+    return parseFloat(complStyles.getPropertyValue('width').split('px')[0])
+  }
+  //------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+  /*--------------------------------------------END-------------------------------------*/
 
 
 }
