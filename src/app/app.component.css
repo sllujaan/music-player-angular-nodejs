@@ -19,6 +19,11 @@
     --menu-color: rgb(39, 39, 39);
 
     --z-index-sample-audio: 2000;
+
+
+    --z-index-dot-circle: 150;
+    --z-index-progress: 100;
+    --z-index-buffer: 50;
 }
 
 

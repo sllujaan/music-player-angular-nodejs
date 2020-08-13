@@ -121,6 +121,8 @@ export class AppComponent implements OnInit {
     console.log(e);
     
     console.log(this.getSeekerContainerWidth());
+
+    console.log(this.progress.nativeElement.style.setProperty('width', '30%') );
   }
 
   _onMouseMove_seekerContainer(e) {
