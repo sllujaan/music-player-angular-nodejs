@@ -1,5 +1,8 @@
 import { Component, OnInit, Renderer2, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { MusicPlayerApiService } from './music-player-api.service';
+import { SeekerControlsService } from './seeker-controls.service';
+
+declare var shaka: any;
 
 @Component({
   selector: 'app-root',
@@ -17,14 +20,9 @@ export class AppComponent implements OnInit {
     this.el_buffer_seeker = this.buffer_seeker.nativeElement;
     this.el_seeker_container = this.seeker_container.nativeElement;
 
-    const dot_width = this.getElementWidth(this.el_dot_circle)
-    const dot_center = dot_width / 2;
-    this.dot_center = dot_center;
-
-    
+    this._seeker_service.setVariables(this.el_seeker_container, this.el_progress, this.el_buffer_seeker, this.el_dot_circle);
 
     //initializing seeker controls---------
-    this.initSeeker();
   }
 
 
@@ -47,7 +45,7 @@ export class AppComponent implements OnInit {
   
   playerHidden = false
   
-  constructor(public musics_api: MusicPlayerApiService, private render: Renderer2) { }
+  constructor(public musics_api: MusicPlayerApiService, private render: Renderer2, public _seeker_service: SeekerControlsService) { }
   
   ngOnInit(): void {
 
@@ -135,143 +133,7 @@ export class AppComponent implements OnInit {
 
 
 
-  /*------------------------------seeker container content-----------------------------*/
   
-  // seeker container mouse events-----------------------
-  _onClick_seekerContainer(e) {
-    console.log(e);
-    const seeker_containerWidth = this.getSeekerContainerWidth()
-    //progress.style.setProperty('width', `${e.clientX + 1}px`)
-    const clientX = e.clientX - getContainerOffset()
-    const percentage = setProgressClient(clientX, seeker_containerWidth)
-  }
-
-  _onMouseMove_seekerContainer(e) {
-
-  }
-
-  _onMouseDown_seekerContainer(e) {
-
-  }
-
-  _onMouseUp_seekerContainer(e) {
-
-  }
-
-  //  player container mouse events---------------------------
-
-  _onMouseUp_playerContainer(e) {
-
-  }
-
-  _onMouseMove_playerContainer(e) {
-    
-  }
-
-
-  //touch events-------------------------------------------
-  _onTouchStart_seekerContainer(e) {
-  
-  }
-
-  _onTouchMove_seekerContainer(e) {
-    
-  }
-
-  _onTouchCancel_seekerContainer(e) {
-    
-  }
-
-  _onTouchEnd_seekerContainer(e) {
-    
-  }
-  
-  _onTouchStart_playerContainer(e) {
-    console.log(e)
-  }
-
-  _onTouchEnd_playerContainer(e) {
-    
-  }
-  
-  
-  //window resize event---------------
-  @HostListener('window:resize', ['$event'])
-  _onWindowResize(e) {
-    console.log(e)
-  }
-  //-------------------------
-
-
-
-
-
-
-
-  //-----------------utitiliy functions--------------------------------------
-  
-  getSeekerContainerWidth() {
-    var container = this.el_seeker_container;
-    const complStyles = window.getComputedStyle(container);
-    return parseFloat(complStyles.getPropertyValue('width').split('px')[0]);
-  }
-  //------------------------------------------------------------
-
-
-
-
-
-  //player reset functions-------------------------------
-  resetPlayer() {
-    this.el_progress.style.setProperty('width', '0%');
-    this.el_buffer_seeker.style.setProperty('width', '0%');
-    this.el_buffer_seeker.style.setProperty('left', '0%');
-    this.updateDotCircle();
-  }
-
-  updateDotCircle() {
-    const width = this.getElementWidth(this.el_progress) - this.dot_center;
-    this.el_dot_circle.style.setProperty('left', `${width}px`)
-  }
-  //------------------------------
-
-  getElementWidth(element) {
-    const compStyles = window.getComputedStyle(element);
-    const width = parseFloat(compStyles.getPropertyValue('width').split('px')[0]);
-    return width;
-}
-
-
-
-
-  getContainerOffset() {
-    return this.el_seeker_container.offsetLeft;
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  initSeeker() {
-    this.resetPlayer();
-  }
-
-
-  /*--------------------------------------------END-------------------------------------*/
 
 
 }
