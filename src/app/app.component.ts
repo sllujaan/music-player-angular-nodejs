@@ -10,14 +10,35 @@ export class AppComponent implements OnInit {
 
   ngAfterViewInit() {
     console.log('dom loaded');
-    console.log(this.seeker_container.nativeElement);
+
+    //initializing dom elements--
+    this.el_progress = this.progress.nativeElement;
+    this.el_dot_circle = this.dot_circle.nativeElement;
+    this.el_buffer_seeker = this.buffer_seeker.nativeElement;
+    this.el_seeker_container = this.seeker_container.nativeElement;
+
+    const dot_width = this.getElementWidth(this.el_dot_circle)
+    const dot_center = dot_width / 2;
+    this.dot_center = dot_center;
+
+    
+
+    //initializing seeker controls---------
+    this.initSeeker();
   }
 
 
   @ViewChild('seeker_container', {static: true}) seeker_container: ElementRef;
-  @ViewChild('seeker_buffer', {static: true}) seeker_buffer: ElementRef;
+  @ViewChild('buffer_seeker', {static: true}) buffer_seeker: ElementRef;
   @ViewChild('progress', {static: true}) progress: ElementRef;
   @ViewChild('dot_circle', {static: true}) dot_circle: ElementRef;
+
+  el_progress = null;
+  el_seeker_container = null;
+  el_dot_circle = null;
+  el_buffer_seeker = null;
+  dot_center = null;
+
 
 
 
@@ -119,10 +140,10 @@ export class AppComponent implements OnInit {
   // seeker container mouse events-----------------------
   _onClick_seekerContainer(e) {
     console.log(e);
-    
-    console.log(this.getSeekerContainerWidth());
-
-    console.log(this.progress.nativeElement.style.setProperty('width', '30%') );
+    const seeker_containerWidth = this.getSeekerContainerWidth()
+    //progress.style.setProperty('width', `${e.clientX + 1}px`)
+    const clientX = e.clientX - getContainerOffset()
+    const percentage = setProgressClient(clientX, seeker_containerWidth)
   }
 
   _onMouseMove_seekerContainer(e) {
@@ -190,9 +211,9 @@ export class AppComponent implements OnInit {
   //-----------------utitiliy functions--------------------------------------
   
   getSeekerContainerWidth() {
-    var container = this.seeker_container.nativeElement
+    var container = this.el_seeker_container;
     const complStyles = window.getComputedStyle(container);
-    return parseFloat(complStyles.getPropertyValue('width').split('px')[0])
+    return parseFloat(complStyles.getPropertyValue('width').split('px')[0]);
   }
   //------------------------------------------------------------
 
@@ -200,9 +221,54 @@ export class AppComponent implements OnInit {
 
 
 
+  //player reset functions-------------------------------
+  resetPlayer() {
+    this.el_progress.style.setProperty('width', '0%');
+    this.el_buffer_seeker.style.setProperty('width', '0%');
+    this.el_buffer_seeker.style.setProperty('left', '0%');
+    this.updateDotCircle();
+  }
+
+  updateDotCircle() {
+    const width = this.getElementWidth(this.el_progress) - this.dot_center;
+    this.el_dot_circle.style.setProperty('left', `${width}px`)
+  }
+  //------------------------------
+
+  getElementWidth(element) {
+    const compStyles = window.getComputedStyle(element);
+    const width = parseFloat(compStyles.getPropertyValue('width').split('px')[0]);
+    return width;
+}
 
 
 
+
+  getContainerOffset() {
+    return this.el_seeker_container.offsetLeft;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  initSeeker() {
+    this.resetPlayer();
+  }
 
 
   /*--------------------------------------------END-------------------------------------*/
