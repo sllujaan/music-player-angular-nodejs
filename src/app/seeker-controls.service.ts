@@ -1,11 +1,12 @@
 import { Injectable, HostListener } from '@angular/core';
+import { ShakaPlayerService } from './shaka-player.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SeekerControlsService {
 
-  constructor() { }
+  constructor(private shaka: ShakaPlayerService) { }
 
   //dom element--
   el_progress = null;
@@ -15,9 +16,11 @@ export class SeekerControlsService {
 
   //common variables--
   dot_center = null;
+  AUDIO = null;
 
 
-  setVariables(seeker_container, progress, buffer_seeker, dot_circle) {
+  setVariables(audio, seeker_container, progress, buffer_seeker, dot_circle) {
+    this.AUDIO = audio;
     this.el_seeker_container = seeker_container;
     this.el_progress = progress;
     this.el_buffer_seeker = buffer_seeker;
@@ -40,6 +43,9 @@ export class SeekerControlsService {
     //progress.style.setProperty('width', `${e.clientX + 1}px`)
     const clientX = e.clientX - this.getContainerOffset()
     const percentage = this.setProgressClient(clientX, seeker_containerWidth)
+
+    this.updateTime(percentage)
+
   }
 
   _onMouseMove_seekerContainer(e) {
@@ -111,6 +117,53 @@ export class SeekerControlsService {
     const complStyles = window.getComputedStyle(container);
     return parseFloat(complStyles.getPropertyValue('width').split('px')[0]);
   }
+
+  updateTime(percentage) {
+    const time = this.calculateTimeFromPercentage(percentage, this.AUDIO.duration);
+    this.AUDIO.currentTime = time;
+  }
+  calculateTimeFromPercentage(percentage, totalTime) {
+    //50 percent of 200 formula
+    //50 * 200 / 100
+    const value = (percentage * totalTime) / 100;
+    return value;
+  }
+
+  setProgressPercentage(percentage) {
+    this.el_progress.style.setProperty('width', `${percentage}%`);
+  }
+
+
+  handleProgressBar(currentValue, totalValue) {
+    const percentage = (currentValue / totalValue) * 100;
+    //console.log(percentage)
+    if(!percentage) return;
+    //setProgressWidth(percentage)
+    this.setProgressPercentage(percentage);
+    //setProgressWidth()
+  }
+
+
+  calculateBufferWidthPercentage(start, end, totalTime) {
+    return ((end - start) / totalTime) * 100
+  }
+
+  calculateBufferLeftPercentage(start, totalTime) {
+      return (start / totalTime) * 100
+  }
+
+  updateBuffer(start, end) {
+    const seeker_containerWidth = this.getSeekerContainerWidth();
+    const percentage = this.calculateBufferWidthPercentage(start, end, this.AUDIO.duration)
+    const leftPercentage = this.calculateBufferLeftPercentage(start, this.AUDIO.duration)
+    //console.log(percentage)
+    //console.log(leftPercentage)
+    //console.log(seeker_containerWidth)
+    this.el_buffer_seeker.style.setProperty('width', `${percentage}%`)
+    this.el_buffer_seeker.style.setProperty('left', `${leftPercentage}%`)
+  }
+
+
   //------------------------------------------------------------
 
 
@@ -163,7 +216,25 @@ export class SeekerControlsService {
 
 
 
+  //audio events------------------
+  initAudioEvents() {
+    this.AUDIO.addEventListener('timeupdate', e => {
+      console.log('timeupdatedd...');
 
+      if(!this.AUDIO.duration) return;
+
+      this.handleProgressBar(this.AUDIO.currentTime, this.AUDIO.duration);
+      // if(!progressDragging) updateDotCircle()
+
+      // console.log(player.getBufferedInfo().total[0])
+      const bufferStart = window.player.getBufferedInfo().total[0].start;
+      const bufferEnd = window.player.getBufferedInfo().total[0].end;
+
+      //console.log(bufferStart, bufferEnd);
+
+      this.updateBuffer(bufferStart, bufferEnd)
+    })
+  }
 
 
 
@@ -182,6 +253,7 @@ export class SeekerControlsService {
 
 
     this.resetPlayer();
+    this.initAudioEvents()
   }
 
 

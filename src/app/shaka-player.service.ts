@@ -81,10 +81,16 @@ export class ShakaPlayerService {
       // Log the error.
       console.error('Error code', error.code, 'object', error);
   }
+  getPlayer () {
+    return window.player;
+  }
 
   onDomReady() {
     this.initApp();
   }
+
+  
+
 
 
 }

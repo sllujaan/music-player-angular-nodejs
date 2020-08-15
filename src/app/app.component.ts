@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
 
     //initializing dom elements in seeker service--
     this._seeker_service.setVariables(
+      this.AUDIO.nativeElement,
       this.seeker_container.nativeElement,
       this.progress.nativeElement,
       this.buffer_seeker.nativeElement,
