@@ -24,7 +24,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/style-icomoon.css"
             ],
             "scripts": ["node_modules/shaka-player/dist/shaka-player.compiled.js"]
           },

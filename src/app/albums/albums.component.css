@@ -102,7 +102,7 @@
 
 
 .common-controls {
-    background-color: orange;
+    /* background-color: orange; */
     text-align: center;
     margin-left: 230px;
 }
@@ -229,3 +229,9 @@
 }
 
 /* ---------------------------------------------------------------------------------------- */
+
+
+/*loading icon color*/
+.ico-loading {
+    color: var(--font-color);
+}
