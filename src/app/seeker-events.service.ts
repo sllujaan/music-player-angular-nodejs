@@ -1,4 +1,4 @@
-import { Injectable, HostListener } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { SeekerUtilFuncService } from './seeker-util-func.service';
 
 @Injectable({
@@ -119,7 +119,7 @@ export class SeekerEventsService {
   }
 
   _onTouchEnd_seekerContainer(e) {
-
+    
   }
   
   _onTouchStart_playerContainer(e) {
@@ -159,12 +159,20 @@ export class SeekerEventsService {
   
   
   //window resize event---------------
-  @HostListener('window:resize', ['$event'])
   _onWindowResize(e) {
     console.log(e);
-    //this.util.updateDotCircle();
+    this.util.updateDotCircle();
   }
   //-------------------------
+
+  //audio events--------------
+  _onPlay_Audio(e) {
+    this.AUDIO.play();
+  }
+  _onPause_Audio(e) {
+    this.AUDIO.pause();
+  }
+  //-----------------------
 
 
 
@@ -180,14 +188,28 @@ export class SeekerEventsService {
       this._onTimeUpdate_Audio(e);
     })
 
+    this.AUDIO.addEventListener('play', e => {
+      console.log('play...')
+    })
+
     document.addEventListener('mousemove', e => {
       this._onMouseMove_playerContainer(e);
-      this._onTouchStart_playerContainer(e);
     })
     
     document.addEventListener('mouseup', e => {
       this._onMouseUp_playerContainer(e);
+    })
+
+    document.addEventListener('touchstart', e => {
+      this._onTouchStart_playerContainer(e);
+    })
+
+    document.addEventListener('touchend', e => {
       this._onTouchEnd_playerContainer(e);
+    })
+
+    window.addEventListener('resize', e => {
+      this._onWindowResize(e);
     })
 
   }

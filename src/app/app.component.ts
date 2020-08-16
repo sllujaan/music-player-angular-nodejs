@@ -127,10 +127,18 @@ export class AppComponent implements OnInit {
 
   clickPlayPause(e) {
     e.preventDefault();
-    console.log(e.target.className)
+    //console.log(e.target.className)
     const className = e.target.className;
-    (className === 'fas fa-play fa-2x') ? (this.playPauseClass = 'fas fa-pause fa-2x') : (this.playPauseClass = 'fas fa-play fa-2x');
+    //(className === 'fas fa-play fa-2x') ? (this.playPauseClass = 'fas fa-pause fa-2x') : (this.playPauseClass = 'fas fa-play fa-2x');
 
+    if(className === 'fas fa-play fa-2x') {
+      this.playPauseClass = 'fas fa-pause fa-2x';
+      this._events._onPlay_Audio(e);
+    }
+    else {
+      this.playPauseClass = 'fas fa-play fa-2x';
+      this._events._onPause_Audio(e);
+    }
 
   }
 
