@@ -41,12 +41,12 @@ export class SeekerEventsService {
   // seeker container mouse events-----------------------
   _onClick_seekerContainer(e) {
     console.log(e);
-    const seeker_containerWidth = this.util.getSeekerContainerWidth()
+    const seeker_containerWidth = this.util.getSeekerContainerWidth();
     //progress.style.setProperty('width', `${e.clientX + 1}px`)
-    const clientX = e.clientX - this.util.getContainerOffset()
-    const percentage = this.util.setProgressClient(clientX, seeker_containerWidth)
+    const clientX = e.clientX - this.util.getContainerOffset();
+    const percentage = this.util.setProgressClient(clientX, seeker_containerWidth);
 
-    this.util.updateTime(percentage)
+    this.util.updateTime(percentage);
 
   }
 
@@ -62,59 +62,107 @@ export class SeekerEventsService {
   }
 
   _onMouseDown_seekerContainer(e) {
-    this.mousedown = true
+    this.mousedown = true;
   }
 
   _onMouseUp_seekerContainer(e) {
         //clear mouse variables
         if(this.mousedown && this.mousemove) this.util.handleOnMouseup();
     
-        this.mousedown = false
-        this.mousemove = false
-        this.progressDragging = false
+        this.mousedown = false;
+        this.mousemove = false;
+        this.progressDragging = false;
   }
 
   //  player container mouse events---------------------------
 
   _onMouseUp_playerContainer(e) {
-
+    if(this.mousedown && this.mousemove) this.util.handleOnMouseup();
+    this.mousedown = false;
+    this.mousemove = false;
+    this.progressDragging = false;
   }
 
   _onMouseMove_playerContainer(e) {
-    
+    this.mousemove = true
+
+    if(this.mousedown) {
+      this.progressDragging = true;
+        const seeker_containerWidth = this.util.getSeekerContainerWidth();
+        const clientX = e.clientX - this.util.getContainerOffset();
+        this.util.setProgressDotCircle(clientX, seeker_containerWidth);
+    }
   }
 
 
   //touch events-------------------------------------------
   _onTouchStart_seekerContainer(e) {
-  
+    this.mousedown = true;
   }
 
   _onTouchMove_seekerContainer(e) {
-    
+    this.mousemove = true;
+
+    if(this.mousedown) {
+      this.progressDragging = true;
+        const seeker_containerWidth = this.util.getSeekerContainerWidth();
+        const clientX = e.touches[0].clientX - this.util.getContainerOffset();
+        this.util.setProgressDotCircle(clientX, seeker_containerWidth);
+    }
   }
 
   _onTouchCancel_seekerContainer(e) {
-    
+    if(this.mousedown && this.mousemove) this.util.handleOnMouseup();
+    this.mousedown = false;
+    this.mousemove = false;
+    this.progressDragging = false;
   }
 
   _onTouchEnd_seekerContainer(e) {
-    
+
   }
   
   _onTouchStart_playerContainer(e) {
-    console.log(e)
+    this.mousemove = true;
+
+    if(this.mousedown) {
+      this.progressDragging = true;
+        const seeker_containerWidth = this.util.getSeekerContainerWidth();
+        const clientX = e.touches[0].clientX - this.util.getContainerOffset();
+        this.util.setProgressDotCircle(clientX, seeker_containerWidth);
+    }
   }
 
   _onTouchEnd_playerContainer(e) {
-    
+    if(this.mousedown && this.mousemove) this.util.handleOnMouseup();
+    this.mousedown = false;
+    this.mousemove = false;
+    this.progressDragging = false;
+  }
+
+  _onTimeUpdate_Audio(e) {
+    console.log('timeupdatedd...');
+
+      if(!this.AUDIO.duration) return;
+
+      this.util.handleProgressBar(this.AUDIO.currentTime, this.AUDIO.duration);
+      if(!this.progressDragging) this.util.updateDotCircle();
+
+      // console.log(player.getBufferedInfo().total[0])
+      const bufferStart = window.player.getBufferedInfo().total[0].start;
+      const bufferEnd = window.player.getBufferedInfo().total[0].end;
+
+      //console.log(bufferStart, bufferEnd);
+
+      this.util.updateBuffer(bufferStart, bufferEnd)
   }
   
   
   //window resize event---------------
   @HostListener('window:resize', ['$event'])
   _onWindowResize(e) {
-    console.log(e)
+    console.log(e);
+    //this.util.updateDotCircle();
   }
   //-------------------------
 
@@ -129,21 +177,19 @@ export class SeekerEventsService {
   //audio events------------------
   initAudioEvents() {
     this.AUDIO.addEventListener('timeupdate', e => {
-      console.log('timeupdatedd...');
-
-      if(!this.AUDIO.duration) return;
-
-      this.util.handleProgressBar(this.AUDIO.currentTime, this.AUDIO.duration);
-      if(!this.progressDragging) this.util.updateDotCircle();
-
-      // console.log(player.getBufferedInfo().total[0])
-      const bufferStart = window.player.getBufferedInfo().total[0].start;
-      const bufferEnd = window.player.getBufferedInfo().total[0].end;
-
-      //console.log(bufferStart, bufferEnd);
-
-      this.util.updateBuffer(bufferStart, bufferEnd)
+      this._onTimeUpdate_Audio(e);
     })
+
+    document.addEventListener('mousemove', e => {
+      this._onMouseMove_playerContainer(e);
+      this._onTouchStart_playerContainer(e);
+    })
+    
+    document.addEventListener('mouseup', e => {
+      this._onMouseUp_playerContainer(e);
+      this._onTouchEnd_playerContainer(e);
+    })
+
   }
 
 

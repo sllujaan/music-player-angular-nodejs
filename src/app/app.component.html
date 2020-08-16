@@ -602,10 +602,7 @@
 
 
       <!---Player containers--------------------------------------------->
-      <div class="player-container" #playerContainer 
-      (mouseup)="_events._onMouseUp_playerContainer($event)"
-      (mousemove)="_events._onMouseMove_playerContainer($event)"
-      >
+      <div class="player-container" #playerContainer>
           
           <!-- Title container--------------->
           <div class="title-bar">
@@ -649,10 +646,13 @@
 
                       <!---------------- seeker container content----------- -->
                       <div class="seeker-container" #seeker_container
-                      (click)="_events._onClick_seekerContainer($event)"
-                      (mousedown)="_events._onMouseDown_seekerContainer($event)"
-                      (mousemove)="_events._onMouseMove_seekerContainer($event)"
-                      (mouseup)="_events._onMouseUp_seekerContainer($event)"
+                        (click)="_events._onClick_seekerContainer($event)"
+                        (mousedown)="_events._onMouseDown_seekerContainer($event)"
+                        (mousemove)="_events._onMouseMove_seekerContainer($event)"
+                        (mouseup)="_events._onMouseUp_seekerContainer($event)"
+                        (touchstart)="_events._onTouchStart_seekerContainer($event)"
+                        (touchmove)="_events._onTouchMove_seekerContainer($event)"
+                        (touchcancel)="_events._onTouchCancel_seekerContainer($event)"
                       >
 
                         <div class="seeker" style="position: relative;">
