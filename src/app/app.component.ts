@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2, ViewChild, ElementRef, HostListener } fro
 import { MusicPlayerApiService } from './music-player-api.service';
 import { SeekerControlsService } from './seeker-controls.service';
 import { ShakaPlayerService } from './shaka-player.service';
+import { SeekerEventsService } from './seeker-events.service';
 
 
 @Component({
@@ -49,7 +50,8 @@ export class AppComponent implements OnInit {
     public musics_api: MusicPlayerApiService,
     private render: Renderer2,
     public _seeker_service: SeekerControlsService,
-    public _shaka_service: ShakaPlayerService
+    public _shaka_service: ShakaPlayerService,
+    public _events: SeekerEventsService
   ) { }
   
   ngOnInit(): void {
