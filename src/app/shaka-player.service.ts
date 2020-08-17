@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { SeekerUtilFuncService } from './seeker-util-func.service';
 
 declare global {
   interface Window {player: any;}
@@ -11,10 +12,10 @@ declare var shaka: any;
 })
 export class ShakaPlayerService {
   
-  constructor() {}
+  constructor(private util: SeekerUtilFuncService) {}
 
   AUDIO = null;
-  manifestUri = 'assets/dash/on_my_way_64kbps.mpd'
+  manifestUri = 'assets/dash/on_my_way_64kbps.mp'
 
   setAudio(audio) {
     this.AUDIO = audio;
@@ -62,9 +63,12 @@ export class ShakaPlayerService {
       // Try to load a manifest.
       player.load(this.manifestUri)
       .then(() => {
+        this.util.enablePlayer();
         console.log('The audio has now been loaded!');
       })
       .catch(err => {
+        this.util.disablePlayer();
+        alert("There was an ERROR while loading music. please contact to adminstrator.");
         this.onError(err)
       })
 

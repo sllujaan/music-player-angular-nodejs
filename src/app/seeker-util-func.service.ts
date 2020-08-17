@@ -12,6 +12,7 @@ export class SeekerUtilFuncService {
    el_seeker_container = null;
    el_dot_circle = null;
    el_buffer_seeker = null;
+   el_control_buttons = null;
  
    //common variables--
    dot_center = null;
@@ -22,12 +23,14 @@ export class SeekerUtilFuncService {
  
  
  
-   setVariables(audio, seeker_container, progress, buffer_seeker, dot_circle) {
+   setVariables(audio, seeker_container, progress, buffer_seeker, dot_circle, control_buttons) {
      this.AUDIO = audio;
      this.el_seeker_container = seeker_container;
      this.el_progress = progress;
      this.el_buffer_seeker = buffer_seeker;
      this.el_dot_circle = dot_circle;
+     this.el_control_buttons = control_buttons;
+
    }
 
    init() {
@@ -35,7 +38,8 @@ export class SeekerUtilFuncService {
     const dot_center = dot_width / 2;
     this.dot_center = dot_center;
 
-    this.enablePlayer();
+    this.disablePlayer();
+    console.log(this.el_control_buttons);
    }
 
 
@@ -168,12 +172,14 @@ export class SeekerUtilFuncService {
     this.resetPlayer();
     this.el_seeker_container.style.setProperty('pointer-events', 'none');
     this.el_dot_circle.style.setProperty('background-color', 'silver');
+    this.el_control_buttons.classList.add('disable-control-btns');
   }
 
   enablePlayer() {
     this.resetPlayer();
     this.el_dot_circle.style.setProperty('background-color', this.netflixColor);
     this.el_seeker_container.style.setProperty('pointer-events', 'all');
+    this.el_control_buttons.classList.remove('disable-control-btns');
   }
   
     //------------------------------------------------------------

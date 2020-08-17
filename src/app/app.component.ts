@@ -15,14 +15,17 @@ export class AppComponent implements OnInit {
   ngAfterViewInit() {
     console.log('dom loaded');
 
+    this.componentElements = {
+      audio: this.AUDIO.nativeElement,
+      seeker_container: this.seeker_container.nativeElement,
+      progress: this.progress.nativeElement,
+      buffer_seeker: this.buffer_seeker.nativeElement,
+      dot_circle: this.dot_circle.nativeElement,
+      control_buttons: this.control_buttons.nativeElement
+    }
+
     //initializing dom elements in seeker service--
-    this._seeker_service.setVariables(
-      this.AUDIO.nativeElement,
-      this.seeker_container.nativeElement,
-      this.progress.nativeElement,
-      this.buffer_seeker.nativeElement,
-      this.dot_circle.nativeElement
-      );
+    this._seeker_service.setComponentElements(this.componentElements);
 
     //initializing dom elements in shaka-player service--
     this._shaka_service.setAudio(this.AUDIO.nativeElement);
@@ -39,10 +42,13 @@ export class AppComponent implements OnInit {
   @ViewChild('progress', {static: true}) progress: ElementRef;
   @ViewChild('dot_circle', {static: true}) dot_circle: ElementRef;
   @ViewChild('AUDIO', {static: true}) AUDIO: ElementRef;
+  @ViewChild('control_buttons', {static: true}) control_buttons: ElementRef;
+  @ViewChild('playerContainer', {static: true}) playerContainer: ElementRef
 
   
 
-  title = 'music-player-angular';
+  title: string = 'music-player-angular';
+  componentElements: object = {};
   
   playerHidden = false
   
@@ -72,7 +78,7 @@ export class AppComponent implements OnInit {
 
   }
 
-  @ViewChild('playerContainer', {static: true}) playerContainer: ElementRef
+  
 
   hidePlayer(e) {
 

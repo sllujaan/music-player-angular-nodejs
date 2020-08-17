@@ -671,7 +671,7 @@
           
           
                   <!--Player control buttons contols---------------------------------->
-                  <div class="btns">
+                  <div class="btns" #control_buttons>
                       <div class="btn-loop"><i class="fas fa-redo fa-2x"></i></div>
                       <div class="btn-prev"><i class="fas fa-backward fa-2x"></i></div>
                       <div class="btn-play-pause"><i [ngClass]="playPauseClass" (click)="clickPlayPause($event)"></i></div>
@@ -700,11 +700,11 @@
 
 
       <!------------mini player container------------->
-      <div class="container-mini-player" (click)="showPlayer($event, {})">
+      <div #mini_player class="container-mini-player" (click)="showPlayer($event, {})">
         <div class="image-mini">
             <img src="assets/default.png" alt="">
         </div>
-        <div class="play-pause"><i [ngClass]="playPauseClass" (click)="clickPlayPause($event)"></i></div>
+        <div id="mini-play-pause"  class="play-pause"><i [ngClass]="playPauseClass" (click)="clickPlayPause($event)"></i></div>
         <div class="title">This is the title song.</div>
       </div>
       <!---------------------------------------------->

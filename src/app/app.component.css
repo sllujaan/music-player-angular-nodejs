@@ -440,6 +440,7 @@ h1{
 
 .player-controls > .btns > div > i {
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .player-controls > .progress-bar {
@@ -455,6 +456,10 @@ h1{
 }
 
 
+.disable-control-btns > div > i {
+    color: silver;
+    pointer-events: none;
+}
 
 
 
@@ -611,6 +616,7 @@ h1{
     background-color: orange;
     position: relative;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .seeker-container > .dot-circle {

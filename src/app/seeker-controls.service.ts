@@ -1,5 +1,4 @@
-import { Injectable, HostListener } from '@angular/core';
-import { ShakaPlayerService } from './shaka-player.service';
+import { Injectable } from '@angular/core';
 import { SeekerUtilFuncService } from './seeker-util-func.service';
 import { SeekerEventsService } from './seeker-events.service';
 
@@ -13,37 +12,17 @@ export class SeekerControlsService {
     private events: SeekerEventsService
   ) { }
 
-  //dom element--
-  el_progress = null;
-  el_seeker_container = null;
-  el_dot_circle = null;
-  el_buffer_seeker = null;
 
-  //common variables--
-  dot_center = null;
-  AUDIO = null;
-
-  //event variables
-  mousedown = false
-  mousemove = false
-  progressDragging = false
-
-
-  setVariables(audio, seeker_container, progress, buffer_seeker, dot_circle) {
-    this.AUDIO = audio;
-    this.el_seeker_container = seeker_container;
-    this.el_progress = progress;
-    this.el_buffer_seeker = buffer_seeker;
-    this.el_dot_circle = dot_circle;
-
+  setComponentElements(componentElements: any) {
     this.util.setVariables(
-      this.AUDIO,
-      this.el_seeker_container,
-      this.el_progress,
-      this.el_buffer_seeker,
-      this.el_dot_circle
+      componentElements.audio,
+      componentElements.seeker_container,
+      componentElements.progress,
+      componentElements.buffer_seeker,
+      componentElements.dot_circle,
+      componentElements.control_buttons
     );
-    this.events.setAudio(audio);
+    this.events.setAudio(componentElements.audio);
   }
 
 
