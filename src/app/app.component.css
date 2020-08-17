@@ -15,11 +15,12 @@
 
     --z-index-top-bar-A: 50;
 
-    --font-color: orangered;
-    --menu-color: rgb(39, 39, 39);
-
+    --font-color: #e50914;
+    /* --menu-color: rgb(39, 39, 39); */
+    --menu-color: black;
     --z-index-sample-audio: 2000;
 
+    --color-buffer: #e47e83;
 
     --z-index-dot-circle: 150;
     --z-index-progress: 100;
@@ -637,7 +638,7 @@ h1{
 
 .seeker-container > .seeker >  .progress {
     position: absolute;
-    background-color: red;
+    background-color: var(--font-color);
     width: 40%;
     height: 5px;
 
@@ -648,7 +649,7 @@ h1{
 /* buffer code is currently not being used.----------------------- */
 .buffer {
     /* position: absolute; */
-    background-color: blueviolet;
+    background-color: var(--color-buffer);
     position: absolute;
     width: 20px;
     height: 100%;

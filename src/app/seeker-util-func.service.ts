@@ -16,6 +16,9 @@ export class SeekerUtilFuncService {
    //common variables--
    dot_center = null;
    AUDIO = null;
+
+   //css variables
+   readonly netflixColor: string = '#e50914';
  
  
  
@@ -32,7 +35,7 @@ export class SeekerUtilFuncService {
     const dot_center = dot_width / 2;
     this.dot_center = dot_center;
 
-    this.resetPlayer();
+    this.enablePlayer();
    }
 
 
@@ -161,7 +164,17 @@ export class SeekerUtilFuncService {
     this.updateTime(percentage)
   }
 
-  
+  disablePlayer() {
+    this.resetPlayer();
+    this.el_seeker_container.style.setProperty('pointer-events', 'none');
+    this.el_dot_circle.style.setProperty('background-color', 'silver');
+  }
+
+  enablePlayer() {
+    this.resetPlayer();
+    this.el_dot_circle.style.setProperty('background-color', this.netflixColor);
+    this.el_seeker_container.style.setProperty('pointer-events', 'all');
+  }
   
     //------------------------------------------------------------
 

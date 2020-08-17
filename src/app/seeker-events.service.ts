@@ -9,12 +9,6 @@ export class SeekerEventsService {
   constructor(private util: SeekerUtilFuncService) { }
 
 
-  //dom element--
-  el_progress = null;
-  el_seeker_container = null;
-  el_dot_circle = null;
-  el_buffer_seeker = null;
-
   //common variables--
   AUDIO = null;
 
@@ -23,14 +17,10 @@ export class SeekerEventsService {
   mousemove = false
   progressDragging = false
 
-
-  setVariables(audio, seeker_container, progress, buffer_seeker, dot_circle) {
+  setAudio(audio) {
     this.AUDIO = audio;
-    this.el_seeker_container = seeker_container;
-    this.el_progress = progress;
-    this.el_buffer_seeker = buffer_seeker;
-    this.el_dot_circle = dot_circle;
   }
+
 
   init() {
     this.initAudioEvents();

@@ -43,15 +43,7 @@ export class SeekerControlsService {
       this.el_buffer_seeker,
       this.el_dot_circle
     );
-
-    this.events.setVariables(
-      this.AUDIO,
-      this.el_seeker_container,
-      this.el_progress,
-      this.el_buffer_seeker,
-      this.el_dot_circle
-    );
-
+    this.events.setAudio(audio);
   }
 
 

@@ -27,7 +27,7 @@
               "src/styles.css",
               "src/style-icomoon.css"
             ],
-            "scripts": ["node_modules/shaka-player/dist/shaka-player.compiled.js"]
+            "scripts": ["src/assets/dirt-party/shaka-player/shaka-player.compiled.js"]
           },
           "configurations": {
             "production": {
