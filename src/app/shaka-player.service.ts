@@ -81,6 +81,7 @@ export class ShakaPlayerService {
 
   loadManifest(manifestUri) {
     // Try to load a manifest.
+    console.log(manifestUri);
     window.player.load(manifestUri)
     .then(() => {
       this.util.enablePlayer();

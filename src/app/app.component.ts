@@ -144,7 +144,8 @@ export class AppComponent implements OnInit {
         console.log(res)
 
         //loading manifest---
-        if(res.manifestUri) this._shaka_service.loadManifest(res.manifestUri);
+        const mpdUri = `assets/manifests${res.manifestUri}`
+        if(res.manifestUri) this._shaka_service.loadManifest(mpdUri);
 
         this.showPlayer(null, res)
 
