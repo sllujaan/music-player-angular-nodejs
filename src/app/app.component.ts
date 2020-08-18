@@ -67,9 +67,12 @@ export class AppComponent implements OnInit {
     this.musics_api.data$.subscribe(
       (res : any) => {
         console.log(res)
-        this.showPlayer(null, res)
+
         //loading manifest---
-        if(res.manifestUri) this._shaka_service.loadManifest(res.manifestUri);
+        //this._shaka_service.loadManifest('null');
+
+        this.showPlayer(null, res)
+
         if(!this.playerHidden) {
           this.playerHidden = true
           this.hidePlayer({})

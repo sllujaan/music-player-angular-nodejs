@@ -35,7 +35,7 @@ export class MusicPlayerApiService {
   private data = new BehaviorSubject({});
   data$ = this.data.asObservable();
 
-  changeData(data: object) {
+  changeData(data: any) {
     this.data.next(data)
   }
 

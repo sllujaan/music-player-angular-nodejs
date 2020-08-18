@@ -145,7 +145,7 @@ export class AlbumsComponent implements OnInit {
 
 
 
-    this.musics_api.changeData({name: nameElm, picUrl: picElm, manifestUri: 'assets/dash/on_my_way_64kbps.mpd'})
+    this.musics_api.changeData({name: nameElm, picUrl: picElm, manifestUri: 'assets/dash/on_my_way_64kbps.mp'})  //'assets/dash/on_my_way_64kbps.mpd'
   }
 
 
