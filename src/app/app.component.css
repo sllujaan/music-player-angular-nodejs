@@ -25,6 +25,8 @@
     --z-index-dot-circle: 150;
     --z-index-progress: 100;
     --z-index-buffer: 50;
+
+    --color-disabled: gray;
 }
 
 
@@ -456,13 +458,6 @@ h1{
 }
 
 
-.disable-control-btns > div > i {
-    color: silver;
-    pointer-events: none;
-}
-
-
-
 /*--------------------- seeker css ------------------------*/
 
 /* 
@@ -672,7 +667,14 @@ h1{
 /* -----------------------.----------------------- */
 
 
+.disabled-childs *, .disabled {
+    pointer-events: none;
+    color: var(--color-disabled);
+}
 
+.disabled-seeker > div {
+    background-color: gray;
+}
 
 
 

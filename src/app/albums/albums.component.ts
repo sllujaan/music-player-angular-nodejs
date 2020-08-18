@@ -124,6 +124,7 @@ export class AlbumsComponent implements OnInit {
 
 
   callParentToShowPlayer(e) {
+    console.log(this.musicsList)
 
     var nameElm
     var picElm
@@ -144,7 +145,7 @@ export class AlbumsComponent implements OnInit {
 
 
 
-    this.musics_api.changeData({name: nameElm, picUrl: picElm})
+    this.musics_api.changeData({name: nameElm, picUrl: picElm, manifestUri: 'assets/dash/on_my_way_64kbps.mpd'})
   }
 
 

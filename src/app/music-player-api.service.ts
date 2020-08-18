@@ -31,9 +31,9 @@ export class MusicPlayerApiService {
 
   
 
-  //child to parent with routeroutlet communication-----
-  private data = new BehaviorSubject({})
-  data$ = this.data.asObservable()
+  //data comunication between component when changes as observable--
+  private data = new BehaviorSubject({});
+  data$ = this.data.asObservable();
 
   changeData(data: object) {
     this.data.next(data)

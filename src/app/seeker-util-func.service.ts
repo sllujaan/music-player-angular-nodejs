@@ -170,16 +170,15 @@ export class SeekerUtilFuncService {
 
   disablePlayer() {
     this.resetPlayer();
-    this.el_seeker_container.style.setProperty('pointer-events', 'none');
-    this.el_dot_circle.style.setProperty('background-color', 'silver');
-    this.el_control_buttons.classList.add('disable-control-btns');
+    this.el_seeker_container.classList.add('disabled-seeker');
+    this.el_control_buttons.classList.add('disabled-childs');
   }
 
   enablePlayer() {
     this.resetPlayer();
     this.el_dot_circle.style.setProperty('background-color', this.netflixColor);
-    this.el_seeker_container.style.setProperty('pointer-events', 'all');
-    this.el_control_buttons.classList.remove('disable-control-btns');
+    this.el_seeker_container.classList.remove('disabled');
+    this.el_control_buttons.classList.remove('disabled-childs');
   }
   
     //------------------------------------------------------------

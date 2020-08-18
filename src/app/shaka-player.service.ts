@@ -15,7 +15,7 @@ export class ShakaPlayerService {
   constructor(private util: SeekerUtilFuncService) {}
 
   AUDIO = null;
-  manifestUri = 'assets/dash/on_my_way_64kbps.mp'
+  manifestUri = 'assets/dash/on_my_way_64kbps.mpd'
 
   setAudio(audio) {
     this.AUDIO = audio;
@@ -60,17 +60,7 @@ export class ShakaPlayerService {
       // Listen for error events.
       player.addEventListener('error', this.onErrorEvent);
 
-      // Try to load a manifest.
-      player.load(this.manifestUri)
-      .then(() => {
-        this.util.enablePlayer();
-        console.log('The audio has now been loaded!');
-      })
-      .catch(err => {
-        this.util.disablePlayer();
-        alert("There was an ERROR while loading music. please contact to adminstrator.");
-        this.onError(err)
-      })
+      this.loadManifest(this.manifestUri);
 
       
   }
@@ -87,6 +77,20 @@ export class ShakaPlayerService {
   }
   getPlayer () {
     return window.player;
+  }
+
+  loadManifest(manifestUri) {
+    // Try to load a manifest.
+    window.player.load(manifestUri)
+    .then(() => {
+      this.util.enablePlayer();
+      console.log('The audio has now been loaded!');
+    })
+    .catch(err => {
+      this.util.disablePlayer();
+      alert("There was an ERROR while loading music. please contact to adminstrator.");
+      this.onError(err)
+    })
   }
 
   onDomReady() {
