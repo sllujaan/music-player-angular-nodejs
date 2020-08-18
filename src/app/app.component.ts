@@ -13,6 +13,7 @@ import { SeekerEventsService } from './seeker-events.service';
 export class AppComponent implements OnInit {
 
   ngAfterViewInit() {
+    //all the child components have been loaded.
     console.log('dom loaded');
 
     this.componentElements = {
@@ -33,6 +34,9 @@ export class AppComponent implements OnInit {
     //initializing seeker controls---------
     this._seeker_service.initSeeker();
     this._shaka_service.onDomReady();
+
+    //handle obsreveable
+    this.handleObservable()
     
   }
 
@@ -61,30 +65,10 @@ export class AppComponent implements OnInit {
   ) { }
   
   ngOnInit(): void {
-
-    this.showPlayer(null, {name:"undef", picUrl:"undef"})
     
-    this.musics_api.data$.subscribe(
-      (res : any) => {
-        console.log(res)
-
-        //loading manifest---
-        //this._shaka_service.loadManifest('null');
-
-        this.showPlayer(null, res)
-
-        if(!this.playerHidden) {
-          this.playerHidden = true
-          this.hidePlayer({})
-        }
-      },
-      (err) => console.error(err)
-    )
-
   }
 
   
-
   hidePlayer(e) {
 
     console.log(e.target)
@@ -151,6 +135,26 @@ export class AppComponent implements OnInit {
       this._events._onPause_Audio(e);
     }
 
+  }
+
+  handleObservable() {
+    
+    this.musics_api.data$.subscribe(
+      (res : any) => {
+        console.log(res)
+
+        //loading manifest---
+        if(res.manifestUri) this._shaka_service.loadManifest(res.manifestUri);
+
+        this.showPlayer(null, res)
+
+        if(!this.playerHidden) {
+          this.playerHidden = true
+          this.hidePlayer({})
+        }
+      },
+      (err) => console.error(err)
+    )
   }
 
 

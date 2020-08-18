@@ -124,7 +124,8 @@ export class AlbumsComponent implements OnInit {
 
 
   callParentToShowPlayer(e) {
-    console.log(this.musicsList)
+    console.log(e.target.dataset.musicpath)
+    const _manifestUri = e.target.dataset.musicpath + "_64kbps.mpd";
 
     var nameElm
     var picElm
@@ -145,7 +146,7 @@ export class AlbumsComponent implements OnInit {
 
 
 
-    this.musics_api.changeData({name: nameElm, picUrl: picElm, manifestUri: 'assets/dash/on_my_way_64kbps.mp'})  //'assets/dash/on_my_way_64kbps.mpd'
+    this.musics_api.changeData({name: nameElm, picUrl: picElm, manifestUri: _manifestUri})  //'assets/dash/on_my_way_64kbps.mpd'
   }
 
 
