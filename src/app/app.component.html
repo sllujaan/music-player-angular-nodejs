@@ -615,6 +615,7 @@
           
           <!-- Image container--------------->
           <div class="image-container">
+            <div *ngIf="_shaka_service.musicBuffering" class="buffering"><span class="icon-spinner2 rotate large ico-loading"></span></div>
               <div class="image">
                   <div class="container">
                     <img id="play-image" src="assets/default.png" alt="photo" srcset="">

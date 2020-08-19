@@ -15,7 +15,8 @@ export class ShakaPlayerService {
   constructor(private util: SeekerUtilFuncService) {}
 
   AUDIO = null;
-  manifestUri = 'assets/dash/on_my_way_64kbps.mpd'
+  manifestUri = 'assets/dash/on_my_way_64kbps.mpd';
+  public musicBuffering = false;
 
   setAudio(audio) {
     this.AUDIO = audio;
@@ -58,7 +59,7 @@ export class ShakaPlayerService {
       window.player = player;
 
       // Listen for error events.
-      player.addEventListener('error', this.onErrorEvent, true);
+      this.initShakaEvents(player);
 
       this.loadManifest(this.manifestUri);
 
@@ -89,8 +90,33 @@ export class ShakaPlayerService {
     })
     .catch(err => {
       this.util.disablePlayer();
-      alert("There was an ERROR while loading music. please contact to adminstrator.");
+      alert("There was an ERROR while loading music! please contact to adminstrator.");
       this.onError(err)
+    })
+  }
+
+  //shaka events--------------
+  initShakaEvents(player) {
+    //player.addEventListener('error', this.onErrorEvent);
+    //buffering events
+    player.addEventListener('buffering', e => {
+      console.log('buffring', e)
+      this.musicBuffering = true;
+      //el_buffer.innerHTML =  `buffering...`
+    })
+    setInterval(() => {
+      if(!player.isBuffering())
+      this.musicBuffering = false;
+    }, 1000);
+    //--------------------------
+    player.addEventListener('error', e => {
+      console.error('error', e)
+      if(e.detail.code === 1001) {
+        //resource not fount. 404
+        this.util.disablePlayer();
+        alert("Resource Not found! please contact to adminstrator.");
+
+      }
     })
   }
 

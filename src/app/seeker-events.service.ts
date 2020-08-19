@@ -183,7 +183,7 @@ export class SeekerEventsService {
     })
     this.AUDIO.addEventListener('error', e => {
       console.error('media src ERORRRRRRRRRRRRRRRRR');
-    })
+    }, true)
 
     document.addEventListener('mousemove', e => {
       this._onMouseMove_playerContainer(e);
