@@ -49,6 +49,7 @@ export class SeekerUtilFuncService {
 
     this.disablePlayer();
     console.log(this.el_timer);
+    this.enablePlayer();
    }
 
 
@@ -64,6 +65,7 @@ export class SeekerUtilFuncService {
     }
   
     updateTime(percentage) {
+      if(!this.AUDIO.duration) return;
       const time = this.calculateTimeFromPercentage(percentage, this.AUDIO.duration);
       this.AUDIO.currentTime = time;
     }
@@ -193,7 +195,7 @@ export class SeekerUtilFuncService {
   enablePlayer() {
     this.resetPlayer();
     this.el_dot_circle.style.setProperty('background-color', this.netflixColor);
-    this.el_seeker_container.classList.remove('disabled');
+    this.el_seeker_container.classList.remove('disabled-seeker');
     this.el_control_buttons.classList.remove('disabled-childs');
     this.el_timer.classList.remove('disabled-childs');
     this.el_mini_title.classList.remove('disabled');

@@ -13,9 +13,9 @@ export class SeekerEventsService {
   AUDIO = null;
 
   //event variables
-  mousedown = false
-  mousemove = false
-  progressDragging = false
+  mousedown = false;
+  mousemove = false;
+  progressDragging = false;
 
   setAudio(audio) {
     this.AUDIO = audio;
