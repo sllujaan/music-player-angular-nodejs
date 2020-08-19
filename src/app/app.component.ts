@@ -157,7 +157,7 @@ export class AppComponent implements OnInit {
         console.log(res)
 
         //loading manifest---
-        const mpdUri = `assets/manifests${res.manifestUri}`
+        const mpdUri = `assets/manifests${res.manifestUri}`;
         if(res.manifestUri) this._shaka_service.loadManifest(mpdUri);
 
 
@@ -165,8 +165,8 @@ export class AppComponent implements OnInit {
         this.showPlayer(null, res)
 
         if(!this.playerHidden) {
-          this.playerHidden = true
-          this.hidePlayer({})
+          this.playerHidden = true;
+          this.hidePlayer({});
         }
       },
       (err) => console.error(err)
