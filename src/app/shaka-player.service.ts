@@ -86,9 +86,11 @@ export class ShakaPlayerService {
     window.player.load(manifestUri)
     .then(() => {
       this.util.enablePlayer();
+      this.AUDIO.play();
       console.log('The audio has now been loaded!');
     })
     .catch(err => {
+      this.AUDIO.pause();
       this.util.disablePlayer();
       alert("There was an ERROR while loading music! please contact to adminstrator.");
       this.onError(err)

@@ -181,9 +181,15 @@ export class SeekerEventsService {
     this.AUDIO.addEventListener('play', e => {
       console.log('play...')
     })
-    this.AUDIO.addEventListener('error', e => {
-      console.error('media src ERORRRRRRRRRRRRRRRRR');
-    }, true)
+    this.AUDIO.addEventListener('pause', e => {
+      console.log('pause...')
+    })
+    this.AUDIO.addEventListener('ended', e => {
+      console.log('ended...');
+      this.AUDIO.pause();
+      this.util.resetPlayer();
+      
+    })
 
     document.addEventListener('mousemove', e => {
       this._onMouseMove_playerContainer(e);

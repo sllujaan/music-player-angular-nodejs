@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
     this._shaka_service.onDomReady();
 
     //handle obsreveable
-    this.handleObservable()
+    this.onMusicClickObservable()
     
   }
 
@@ -150,7 +150,7 @@ export class AppComponent implements OnInit {
 
   }
 
-  handleObservable() {
+  onMusicClickObservable() {
     
     this.musics_api.data$.subscribe(
       (res : any) => {

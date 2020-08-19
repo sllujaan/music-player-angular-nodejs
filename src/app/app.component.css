@@ -19,6 +19,7 @@
     /* --menu-color: rgb(39, 39, 39); */
     --menu-color: black;
     --z-index-sample-audio: 2000;
+    --z-index-buffering: 1500;
 
     --color-buffer: #e47e83;
 
@@ -334,6 +335,7 @@ h1{
 
 .player-container .buffering {
     background-color:  rgba(0, 0, 0, 0.329);
+    color: var(--font-color);
     height: calc(100% - 20px);
     width: calc(100% - 20px);
     text-align: center;
@@ -343,11 +345,13 @@ h1{
     justify-content: center;
     align-items: center;
 
+    z-index: var(--z-index-buffering);
+
     
 }
 
 .player-container .buffering .loading {
-    background-color: green;
+    color: var(--font-color);
     /* width: 100%;
     height: 100%;
     line-height: 30; */
