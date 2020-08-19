@@ -14,14 +14,7 @@ export class SeekerControlsService {
 
 
   setComponentElements(componentElements: any) {
-    this.util.setVariables(
-      componentElements.audio,
-      componentElements.seeker_container,
-      componentElements.progress,
-      componentElements.buffer_seeker,
-      componentElements.dot_circle,
-      componentElements.control_buttons
-    );
+    this.util.setComponentElements(componentElements);
     this.events.setAudio(componentElements.audio);
   }
 

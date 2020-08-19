@@ -13,6 +13,12 @@ export class SeekerUtilFuncService {
    el_dot_circle = null;
    el_buffer_seeker = null;
    el_control_buttons = null;
+   el_timer = null;
+   el_current_timer = null;
+   el_total_timer = null;
+   el_player_title = null;
+   el_mini_title = null;
+   
  
    //common variables--
    dot_center = null;
@@ -21,16 +27,19 @@ export class SeekerUtilFuncService {
    //css variables
    readonly netflixColor: string = '#e50914';
  
- 
- 
-   setVariables(audio, seeker_container, progress, buffer_seeker, dot_circle, control_buttons) {
-     this.AUDIO = audio;
-     this.el_seeker_container = seeker_container;
-     this.el_progress = progress;
-     this.el_buffer_seeker = buffer_seeker;
-     this.el_dot_circle = dot_circle;
-     this.el_control_buttons = control_buttons;
 
+   setComponentElements(componentElements: any) {
+    this.AUDIO = componentElements.audio,
+    this.el_seeker_container = componentElements.seeker_container,
+    this.el_progress = componentElements.progress,
+    this.el_buffer_seeker = componentElements.buffer_seeker,
+    this.el_dot_circle = componentElements.dot_circle,
+    this.el_control_buttons = componentElements.control_buttons
+    this.el_timer = componentElements.timer,
+    this.el_current_timer = componentElements.current_timer,
+    this.el_total_timer = componentElements.total_timer,
+    this.el_player_title = componentElements.player_title,
+    this.el_mini_title = componentElements.mini_title
    }
 
    init() {
@@ -39,7 +48,7 @@ export class SeekerUtilFuncService {
     this.dot_center = dot_center;
 
     this.disablePlayer();
-    console.log(this.el_control_buttons);
+    console.log(this.el_timer);
    }
 
 
@@ -172,6 +181,13 @@ export class SeekerUtilFuncService {
     this.resetPlayer();
     this.el_seeker_container.classList.add('disabled-seeker');
     this.el_control_buttons.classList.add('disabled-childs');
+    this.el_timer.classList.add('disabled-childs');
+    this.el_mini_title.classList.add('disabled');
+    this.el_player_title.classList.add('disabled');
+
+
+    this.el_mini_title.innerText = `Netflix Music`;
+    this.el_player_title.innerText = `Netflix Music`;
   }
 
   enablePlayer() {
@@ -179,6 +195,8 @@ export class SeekerUtilFuncService {
     this.el_dot_circle.style.setProperty('background-color', this.netflixColor);
     this.el_seeker_container.classList.remove('disabled');
     this.el_control_buttons.classList.remove('disabled-childs');
+    this.el_timer.classList.remove('disabled-childs');
+    this.el_mini_title.classList.remove('disabled');
   }
   
     //------------------------------------------------------------

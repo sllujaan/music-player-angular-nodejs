@@ -539,7 +539,7 @@
 
 
 
-<h1>Music Library</h1>
+<h1>Netflix Music</h1>
 <!---Top bar content--------------------------------------------->
 <div class="top-bar-A">
 
@@ -606,7 +606,7 @@
           
           <!-- Title container--------------->
           <div class="title-bar">
-              <div class="title"><span id="player-name">title a - title b - title c - title d - title e - title f - title g - title h - title - title - title</span></div>
+              <div class="title"><span id="player-name" #player_title>title a - title b - title c - title d - title e - title f - title g - title h - title - title - title</span></div>
               <div class="btns">
                   <!-- <i class="fas fa-window-minimize fa-1x" ></i> -->
                   <i class="fas fa-times fa-1x" (click)="hidePlayer($event)" ></i>
@@ -632,10 +632,10 @@
                   <!--progress bar contols---------------------------------->
                   <div class="progress-bar">
                       
-                      <div class="time-container">
-                          <span class="duration current-time">00:00</span>
+                      <div class="time-container" #timer>
+                          <span class="duration current-time" #current_timer>00:00</span>
                           <span class="separater">/</span>
-                          <span class="duration total-time">00:00</span>
+                          <span class="duration total-time" #total_timer>00:00</span>
                       </div>
                       <!-- <div class="seeker-container">
                           <div class="seeker">
@@ -700,12 +700,12 @@
 
 
       <!------------mini player container------------->
-      <div #mini_player class="container-mini-player" (click)="showPlayer($event, {})">
+      <div #mini_player class="container-mini-player" (click)="showPlayer($event, {name: mini_player_title, picUrl: mini_player_URL, manifestUri: null})">
         <div class="image-mini">
-            <img src="assets/default.png" alt="">
+            <img [src]="mini_player_URL" alt="">
         </div>
         <div id="mini-play-pause"  class="play-pause disabled"><i [ngClass]="playPauseClass" (click)="clickPlayPause($event)"></i></div>
-        <div class="title">This is the title song.</div>
+        <div class="title" #mini_title>{{mini_player_title}}</div>
       </div>
       <!---------------------------------------------->
       

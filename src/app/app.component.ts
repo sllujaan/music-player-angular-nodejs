@@ -22,7 +22,12 @@ export class AppComponent implements OnInit {
       progress: this.progress.nativeElement,
       buffer_seeker: this.buffer_seeker.nativeElement,
       dot_circle: this.dot_circle.nativeElement,
-      control_buttons: this.control_buttons.nativeElement
+      control_buttons: this.control_buttons.nativeElement,
+      timer: this.timer.nativeElement,
+      current_timer: this.current_timer.nativeElement,
+      total_timer: this.total_timer.nativeElement,
+      player_title: this.player_title.nativeElement,
+      mini_title: this.mini_title.nativeElement
     }
 
     //initializing dom elements in seeker service--
@@ -33,7 +38,7 @@ export class AppComponent implements OnInit {
 
     //initializing seeker controls---------
     this._seeker_service.initSeeker();
-    this._shaka_service.onDomReady();
+    //this._shaka_service.onDomReady();
 
     //handle obsreveable
     this.handleObservable()
@@ -48,11 +53,18 @@ export class AppComponent implements OnInit {
   @ViewChild('AUDIO', {static: true}) AUDIO: ElementRef;
   @ViewChild('control_buttons', {static: true}) control_buttons: ElementRef;
   @ViewChild('playerContainer', {static: true}) playerContainer: ElementRef
+  @ViewChild('timer', {static: true}) timer: ElementRef
+  @ViewChild('current_timer', {static: true}) current_timer: ElementRef
+  @ViewChild('total_timer', {static: true}) total_timer: ElementRef
+  @ViewChild('player_title', {static: true}) player_title: ElementRef
+  @ViewChild('mini_title', {static: true}) mini_title: ElementRef
 
   
 
   title: string = 'music-player-angular';
   componentElements: object = {};
+  mini_player_URL = 'assets/default.png';
+  mini_player_title = 'This is the title song.';
   
   playerHidden = false
   
@@ -146,6 +158,8 @@ export class AppComponent implements OnInit {
         //loading manifest---
         const mpdUri = `assets/manifests${res.manifestUri}`
         if(res.manifestUri) this._shaka_service.loadManifest(mpdUri);
+
+
 
         this.showPlayer(null, res)
 

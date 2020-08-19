@@ -276,7 +276,7 @@ h1{
 
 .player-container .title-bar .title span {
     display: block;
-    color: white;
+    /* color: white; */
     /* background-color: green; */
     background-color: initial;
     width: 100%;
@@ -608,14 +608,14 @@ h1{
 /*new seeker css---------------------------------------------------*/
 
 .seeker-container {
-    background-color: orange;
+    background-color: lightgray;
     position: relative;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 }
 
 .seeker-container > .dot-circle {
-    background-color: green;
+    /* background-color: green; */
     position: absolute;
     height: 18px;
     width: 18px;
@@ -628,7 +628,7 @@ h1{
 }
 
 .seeker-container > .seeker {
-    background-color: lightgray;
+    /* background-color: lightgray; */
     width: 100%;
     height: 5px;
 
@@ -676,6 +676,10 @@ h1{
     background-color: gray;
 }
 
+.disabled-seeker {
+    pointer-events: none;
+}
+
 
 
 
@@ -704,6 +708,7 @@ h1{
 .container-mini-player {
     /* background-color: orange; */
     background-color: var(--menu-color);
+    color: white;
     position: fixed;
     height: 50px;
     width: 100%;
@@ -737,7 +742,7 @@ h1{
 
 .play-pause {
     /* background-color: yellow; */
-    color: white;
+    /* color: white; */
     height: 100%;
     width: 50px;
 
@@ -752,7 +757,7 @@ h1{
 
 .container-mini-player .title {
     /* background-color: gray; */
-    color: white;
+    /* color: white; */
     width: 100%;
     
     flex: 1;
