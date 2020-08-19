@@ -58,7 +58,7 @@ export class ShakaPlayerService {
       window.player = player;
 
       // Listen for error events.
-      player.addEventListener('error', this.onErrorEvent);
+      player.addEventListener('error', this.onErrorEvent, true);
 
       this.loadManifest(this.manifestUri);
 

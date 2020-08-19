@@ -704,7 +704,7 @@
         <div class="image-mini">
             <img [src]="mini_player_URL" alt="">
         </div>
-        <div id="mini-play-pause"  class="play-pause disabled"><i [ngClass]="playPauseClass" (click)="clickPlayPause($event)"></i></div>
+        <div id="mini-play-pause"  class="play-pause" #mini_play_pause><i [ngClass]="playPauseClass" (click)="clickPlayPause($event)"></i></div>
         <div class="title" #mini_title>{{mini_player_title}}</div>
       </div>
       <!---------------------------------------------->

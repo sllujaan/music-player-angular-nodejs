@@ -27,7 +27,8 @@ export class AppComponent implements OnInit {
       current_timer: this.current_timer.nativeElement,
       total_timer: this.total_timer.nativeElement,
       player_title: this.player_title.nativeElement,
-      mini_title: this.mini_title.nativeElement
+      mini_title: this.mini_title.nativeElement,
+      mini_play_pause: this.mini_play_pause.nativeElement
     }
 
     //initializing dom elements in seeker service--
@@ -38,7 +39,7 @@ export class AppComponent implements OnInit {
 
     //initializing seeker controls---------
     this._seeker_service.initSeeker();
-    //this._shaka_service.onDomReady();
+    this._shaka_service.onDomReady();
 
     //handle obsreveable
     this.handleObservable()
@@ -58,9 +59,9 @@ export class AppComponent implements OnInit {
   @ViewChild('total_timer', {static: true}) total_timer: ElementRef
   @ViewChild('player_title', {static: true}) player_title: ElementRef
   @ViewChild('mini_title', {static: true}) mini_title: ElementRef
-
+  @ViewChild('mini_play_pause', {static: true}) mini_play_pause: ElementRef
   
-
+  
   title: string = 'music-player-angular';
   componentElements: object = {};
   mini_player_URL = 'assets/default.png';

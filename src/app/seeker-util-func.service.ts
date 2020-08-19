@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +19,15 @@ export class SeekerUtilFuncService {
    el_total_timer = null;
    el_player_title = null;
    el_mini_title = null;
+   el_mini_play_pause = null;
+
    
  
    //common variables--
    dot_center = null;
    AUDIO = null;
+   private playPauseClass: BehaviorSubject<any> = new BehaviorSubject(null);
+   public playPauseClass$: Observable<any> = this.playPauseClass.asObservable();
 
    //css variables
    readonly netflixColor: string = '#e50914';
@@ -40,6 +45,7 @@ export class SeekerUtilFuncService {
     this.el_total_timer = componentElements.total_timer,
     this.el_player_title = componentElements.player_title,
     this.el_mini_title = componentElements.mini_title
+    this.el_mini_play_pause = componentElements.mini_play_pause
    }
 
    init() {
@@ -49,7 +55,7 @@ export class SeekerUtilFuncService {
 
     this.disablePlayer();
     console.log(this.el_timer);
-    this.enablePlayer();
+    //this.enablePlayer();
    }
 
 
@@ -184,6 +190,7 @@ export class SeekerUtilFuncService {
     this.el_seeker_container.classList.add('disabled-seeker');
     this.el_control_buttons.classList.add('disabled-childs');
     this.el_timer.classList.add('disabled-childs');
+    this.el_mini_play_pause.classList.add('disabled');
     this.el_mini_title.classList.add('disabled');
     this.el_player_title.classList.add('disabled');
 
@@ -197,9 +204,19 @@ export class SeekerUtilFuncService {
     this.el_dot_circle.style.setProperty('background-color', this.netflixColor);
     this.el_seeker_container.classList.remove('disabled-seeker');
     this.el_control_buttons.classList.remove('disabled-childs');
+    this.el_mini_play_pause.classList.remove('disabled');
     this.el_timer.classList.remove('disabled-childs');
     this.el_mini_title.classList.remove('disabled');
+    this.el_player_title.classList.remove('disabled');
   }
+
+
+
+  //obervable on audio play pause------------------
+  updatePlayPauseClass(name: string) {
+    this.playPauseClass.next(name);
+  }
+
   
     //------------------------------------------------------------
 
