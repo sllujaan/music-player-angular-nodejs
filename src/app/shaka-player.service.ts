@@ -96,6 +96,7 @@ export class ShakaPlayerService {
     .catch(err => {
       this.AUDIO.pause();
       this.util.disablePlayer();
+      this.util.resetTimes();
       alert("There was an ERROR while loading music! please contact to adminstrator.");
       this.onError(err)
     })
@@ -120,6 +121,7 @@ export class ShakaPlayerService {
       if(e.detail.code === 1001) {
         //resource not fount. 404
         this.util.disablePlayer();
+        this.util.resetTimes();
         alert("Resource Not found! please contact to adminstrator.");
 
       }

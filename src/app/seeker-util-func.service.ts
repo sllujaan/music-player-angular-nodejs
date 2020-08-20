@@ -218,6 +218,9 @@ export class SeekerUtilFuncService {
     this.el_player_title.classList.add('disabled');
     this.AUDIO.pause();
 
+    //for dot circle bug -- //issue cause => inline style color preventing it to be desabled.
+    this.el_dot_circle.style.removeProperty('background-color');
+
 
     //this.el_mini_title.innerText = `Netflix Music`;
     //this.el_player_title.innerText = `Netflix Music`;
@@ -267,6 +270,10 @@ export class SeekerUtilFuncService {
   loadTimes(currTimeStr: string, totalTimeStr: string) : void {
     this.updateTotalTimer(totalTimeStr);
     this.updateCurrentTimer(currTimeStr);
+  }
+  resetTimes() {
+    this.updateTotalTimer(`00:00`);
+    this.updateCurrentTimer(`00:00`);
   }
 
 
