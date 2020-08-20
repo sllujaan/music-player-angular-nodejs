@@ -67,7 +67,7 @@ export class AppComponent implements OnInit {
   title: string = 'music-player-angular';
   componentElements: object = {};
   mini_player_URL = 'assets/default.png';
-  mini_player_title = 'This is the title song.';
+  //mini_player_title = 'This is the title song.';
   
   playerHidden = false
   
@@ -154,10 +154,21 @@ export class AppComponent implements OnInit {
       (res : any) => {
         console.log(res)
 
+        // if(Object.keys(res).length !== 0 && res.constructor() === Object) {
+
+        // }
+
         //loading manifest---
         const mpdUri = `assets/manifests${res.manifestUri}`;
         if(res.manifestUri) this._shaka_service.loadManifest(mpdUri);
 
+        //1. load image to mini player--
+        if(res.picUrl) this.mini_player_URL = res.picUrl;
+        //2. load title to mini player--
+        if(res.name) {
+          console.log("res.name ==> ", res.name);
+          this._seeker_service.mini_player_title = res.name;
+        }
 
 
         this.showPlayer(null, res)

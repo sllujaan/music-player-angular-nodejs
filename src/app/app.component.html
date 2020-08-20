@@ -701,12 +701,12 @@
 
 
       <!------------mini player container------------->
-      <div #mini_player class="container-mini-player" (click)="showPlayer($event, {name: mini_player_title, picUrl: mini_player_URL, manifestUri: null})">
+      <div #mini_player class="container-mini-player" (click)="showPlayer($event, {name: _seeker_service.mini_player_title, picUrl: mini_player_URL, manifestUri: null})">
         <div class="image-mini">
             <img [src]="mini_player_URL" alt="">
         </div>
         <div id="mini-play-pause"  class="play-pause" #mini_play_pause><i [ngClass]="playPauseClass" (click)="clickPlayPause($event)"></i></div>
-        <div class="title" #mini_title>{{mini_player_title}}</div>
+        <div class="title" #mini_title>{{_seeker_service.mini_player_title}}</div>
       </div>
       <!---------------------------------------------->
       

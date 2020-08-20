@@ -13,6 +13,9 @@ export class SeekerControlsService {
   ) { }
 
 
+  public mini_player_title: string = 'Neflix Music ss';
+
+
   setComponentElements(componentElements: any) {
     this.util.setComponentElements(componentElements);
     this.events.setAudio(componentElements.audio);

@@ -219,8 +219,8 @@ export class SeekerUtilFuncService {
     this.AUDIO.pause();
 
 
-    this.el_mini_title.innerText = `Netflix Music`;
-    this.el_player_title.innerText = `Netflix Music`;
+    //this.el_mini_title.innerText = `Netflix Music`;
+    //this.el_player_title.innerText = `Netflix Music`;
   }
 
   enablePlayer() {
