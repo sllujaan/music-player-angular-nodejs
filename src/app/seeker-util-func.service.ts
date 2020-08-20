@@ -163,6 +163,11 @@ export class SeekerUtilFuncService {
     return percentage
   }
 
+  getProgressClient(clientX, totalWidth) {
+    const percentage = this.pxToPercent((clientX), totalWidth)
+    return percentage
+  }
+
 
   pxToPercent(pixels, width) {
     //console.log(pixels, width)
@@ -177,16 +182,22 @@ export class SeekerUtilFuncService {
     return left;
   }
 
-  getPercentageProgressClient() {
+  setPercentageProgressClient() {
     const seeker_containerWidth = this.getSeekerContainerWidth()
     const left = this.getElmentLeft(this.el_dot_circle) + this.dot_center;
     const percentage = this.setProgressClient(left, seeker_containerWidth);
     return percentage;
   }
 
+  getPercentageProgressClient() {
+    const seeker_containerWidth = this.getSeekerContainerWidth()
+    const left = this.getElmentLeft(this.el_dot_circle) + this.dot_center;
+    const percentage = this.getProgressClient(left, seeker_containerWidth);
+    return percentage;
+  }
+
   handleOnMouseup() {
-    const percentage = this.getPercentageProgressClient();
-    
+    const percentage = this.setPercentageProgressClient();
     this.updateTime(percentage)
   }
 

@@ -48,7 +48,7 @@ export class SeekerEventsService {
         const seeker_containerWidth = this.util.getSeekerContainerWidth();
         const clientX = e.clientX - this.util.getContainerOffset();
         this.util.setProgressDotCircle(clientX, seeker_containerWidth);
-
+        //update current time--
         this.util.handleTimeOnMouseMove();
 
     }
@@ -84,6 +84,8 @@ export class SeekerEventsService {
         const seeker_containerWidth = this.util.getSeekerContainerWidth();
         const clientX = e.clientX - this.util.getContainerOffset();
         this.util.setProgressDotCircle(clientX, seeker_containerWidth);
+        //update current time--
+        this.util.handleTimeOnMouseMove();
     }
   }
 
@@ -101,6 +103,8 @@ export class SeekerEventsService {
         const seeker_containerWidth = this.util.getSeekerContainerWidth();
         const clientX = e.touches[0].clientX - this.util.getContainerOffset();
         this.util.setProgressDotCircle(clientX, seeker_containerWidth);
+        //update current time--
+        this.util.handleTimeOnMouseMove();
     }
   }
 
@@ -123,6 +127,8 @@ export class SeekerEventsService {
         const seeker_containerWidth = this.util.getSeekerContainerWidth();
         const clientX = e.touches[0].clientX - this.util.getContainerOffset();
         this.util.setProgressDotCircle(clientX, seeker_containerWidth);
+        //update current time--
+        this.util.handleTimeOnMouseMove();
     }
   }
 
@@ -140,7 +146,7 @@ export class SeekerEventsService {
 
       //update time--
       const currTime = this.util.getTimer(this.AUDIO.currentTime);
-      this.util.updateCurrentTimer(currTime);
+      if(!this.progressDragging) this.util.updateCurrentTimer(currTime);
 
       this.util.handleProgressBar(this.AUDIO.currentTime, this.AUDIO.duration);
       if(!this.progressDragging) this.util.updateDotCircle();
