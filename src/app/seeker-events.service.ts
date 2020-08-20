@@ -180,9 +180,11 @@ export class SeekerEventsService {
 
     this.AUDIO.addEventListener('play', e => {
       console.log('play...')
+      this.util.updatePlayPauseClass('fas fa-pause fa-2x');
     })
     this.AUDIO.addEventListener('pause', e => {
       console.log('pause...')
+      this.util.updatePlayPauseClass('fas fa-play fa-2x');
     })
     this.AUDIO.addEventListener('ended', e => {
       console.log('ended...');

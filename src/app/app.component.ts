@@ -3,6 +3,7 @@ import { MusicPlayerApiService } from './music-player-api.service';
 import { SeekerControlsService } from './seeker-controls.service';
 import { ShakaPlayerService } from './shaka-player.service';
 import { SeekerEventsService } from './seeker-events.service';
+import { SeekerUtilFuncService } from './seeker-util-func.service';
 
 
 @Component({
@@ -42,7 +43,8 @@ export class AppComponent implements OnInit {
     this._shaka_service.onDomReady();
 
     //handle obsreveable
-    this.onMusicClickObservable()
+    this.onMusicClickObservable();
+    this._handle_playPause_observable();
     
   }
 
@@ -51,7 +53,7 @@ export class AppComponent implements OnInit {
   @ViewChild('buffer_seeker', {static: true}) buffer_seeker: ElementRef;
   @ViewChild('progress', {static: true}) progress: ElementRef;
   @ViewChild('dot_circle', {static: true}) dot_circle: ElementRef;
-  @ViewChild('AUDIO', {static: true}) AUDIO: ElementRef;
+  @ViewChild('AUDIO', {static: true}) AUDIO:  ElementRef;
   @ViewChild('control_buttons', {static: true}) control_buttons: ElementRef;
   @ViewChild('playerContainer', {static: true}) playerContainer: ElementRef
   @ViewChild('timer', {static: true}) timer: ElementRef
@@ -74,7 +76,8 @@ export class AppComponent implements OnInit {
     private render: Renderer2,
     public _seeker_service: SeekerControlsService,
     public _shaka_service: ShakaPlayerService,
-    public _events: SeekerEventsService
+    public _events: SeekerEventsService,
+    public _util: SeekerUtilFuncService
   ) { }
   
   ngOnInit(): void {
@@ -131,23 +134,18 @@ export class AppComponent implements OnInit {
 
 
 
-  playPauseClass = 'fas fa-play fa-2x'
+  public playPauseClass = 'fas fa-play fa-2x';
 
   clickPlayPause(e) {
     e.preventDefault();
-    //console.log(e.target.className)
     const className = e.target.className;
-    //(className === 'fas fa-play fa-2x') ? (this.playPauseClass = 'fas fa-pause fa-2x') : (this.playPauseClass = 'fas fa-play fa-2x');
 
-    if(className === 'fas fa-play fa-2x') {
-      this.playPauseClass = 'fas fa-pause fa-2x';
-      this._events._onPlay_Audio(e);
+    if(className.includes('fa-play')) {
+      this.AUDIO.nativeElement.play();
     }
     else {
-      this.playPauseClass = 'fas fa-play fa-2x';
-      this._events._onPause_Audio(e);
+      this.AUDIO.nativeElement.pause();
     }
-
   }
 
   onMusicClickObservable() {
@@ -175,8 +173,43 @@ export class AppComponent implements OnInit {
 
 
 
+  _handle_playPause_observable() {
+    this._util.playPauseClass$.subscribe(
+      (res: string) => {
+        console.log("handle_playPause_observable", res);
+        this.playPauseClass = res;
+      }
+      ,
+      (err: any) => {
+        console.error(err);
+      }
+    )
+  }
+
 
   
 
 
 }
+
+
+
+/*
+clickPlayPause(e) {
+    e.preventDefault();
+    //console.log(e.target.className)
+    const className = e.target.className;
+    //(className === 'fas fa-play fa-2x') ? (this.playPauseClass = 'fas fa-pause fa-2x') : (this.playPauseClass = 'fas fa-play fa-2x');
+    console.log(className)
+
+    if(className === 'fas fa-play fa-2x') {
+      this.playPauseClass = 'fas fa-pause fa-2x';
+      this._events._onPlay_Audio(e);
+    }
+    else {
+      this.playPauseClass = 'fas fa-play fa-2x';
+      this._events._onPause_Audio(e);
+    }
+
+  }
+*/
