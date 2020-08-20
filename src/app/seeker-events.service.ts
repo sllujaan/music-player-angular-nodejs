@@ -48,6 +48,9 @@ export class SeekerEventsService {
         const seeker_containerWidth = this.util.getSeekerContainerWidth();
         const clientX = e.clientX - this.util.getContainerOffset();
         this.util.setProgressDotCircle(clientX, seeker_containerWidth);
+
+        this.util.handleTimeOnMouseMove();
+
     }
   }
 
@@ -135,6 +138,10 @@ export class SeekerEventsService {
 
       if(!this.AUDIO.duration) return;
 
+      //update time--
+      const currTime = this.util.getTimer(this.AUDIO.currentTime);
+      this.util.updateCurrentTimer(currTime);
+
       this.util.handleProgressBar(this.AUDIO.currentTime, this.AUDIO.duration);
       if(!this.progressDragging) this.util.updateDotCircle();
 
@@ -180,6 +187,8 @@ export class SeekerEventsService {
 
     this.AUDIO.addEventListener('play', e => {
       console.log('play...')
+      //update timer---
+      this.util.getTimer(this.AUDIO.duration);
       this.util.updatePlayPauseClass('fas fa-pause fa-2x');
     })
     this.AUDIO.addEventListener('pause', e => {
@@ -188,6 +197,10 @@ export class SeekerEventsService {
     })
     this.AUDIO.addEventListener('ended', e => {
       console.log('ended...');
+      //update time--
+      const currTime = this.util.getTimer(0);
+      this.util.updateCurrentTimer(currTime);
+
       this.AUDIO.pause();
       this.util.resetPlayer();
       

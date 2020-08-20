@@ -176,7 +176,6 @@ export class AppComponent implements OnInit {
   _handle_playPause_observable() {
     this._util.playPauseClass$.subscribe(
       (res: string) => {
-        console.log("handle_playPause_observable", res);
         this.playPauseClass = res;
       }
       ,

@@ -177,12 +177,24 @@ export class SeekerUtilFuncService {
     return left;
   }
 
-  handleOnMouseup() {
+  getPercentageProgressClient() {
     const seeker_containerWidth = this.getSeekerContainerWidth()
     const left = this.getElmentLeft(this.el_dot_circle) + this.dot_center;
-    const percentage = this.setProgressClient(left, seeker_containerWidth)
+    const percentage = this.setProgressClient(left, seeker_containerWidth);
+    return percentage;
+  }
+
+  handleOnMouseup() {
+    const percentage = this.getPercentageProgressClient();
     
     this.updateTime(percentage)
+  }
+
+  handleTimeOnMouseMove() {
+    const percentage = this.getPercentageProgressClient();
+    const time = this.calculateTimeFromPercentage(percentage, this.AUDIO.duration);
+    const strTimer = this.getTimer(time);
+    this.updateCurrentTimer(strTimer);
   }
 
   disablePlayer() {
@@ -193,6 +205,7 @@ export class SeekerUtilFuncService {
     this.el_mini_play_pause.classList.add('disabled');
     this.el_mini_title.classList.add('disabled');
     this.el_player_title.classList.add('disabled');
+    this.AUDIO.pause();
 
 
     this.el_mini_title.innerText = `Netflix Music`;
@@ -208,6 +221,41 @@ export class SeekerUtilFuncService {
     this.el_timer.classList.remove('disabled-childs');
     this.el_mini_title.classList.remove('disabled');
     this.el_player_title.classList.remove('disabled');
+  }
+
+  //timer functions-------------
+  getTimer(secs: number) : string {
+    const h = (secs / 3600);
+    const m = (secs / 60);
+
+    const hours = parseInt((secs / 3600).toString());
+    const minutes = Math.floor((h % 1) * 60);
+    const seconds = parseInt((((m % 1) * 60)).toString());
+
+    if(hours < 24) return this.getTimeToString(hours, minutes, seconds);
+    console.error('time not supported.');
+    return `--:--:--:--`;
+
+}
+
+  getTimeToString(hours, minutes, seconds) : string {
+    const h = hours.toString().padStart(2, 0);
+    const m = minutes.toString().padStart(2, 0);
+    const s = seconds.toString().padStart(2, 0);
+    
+    if(hours > 0) return `${h}:${m}:${s}`;
+    return `${m}:${s}`;
+  }
+
+  updateTotalTimer(timerStr: string): void {
+    this.el_total_timer.innerText = timerStr;
+  }
+  updateCurrentTimer(timerStr: string): void {
+    this.el_current_timer.innerText = timerStr;
+  }
+  loadTimes(currTimeStr: string, totalTimeStr: string) : void {
+    this.updateTotalTimer(totalTimeStr);
+    this.updateCurrentTimer(currTimeStr);
   }
 
 

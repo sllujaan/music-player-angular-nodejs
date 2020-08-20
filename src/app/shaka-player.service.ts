@@ -85,7 +85,11 @@ export class ShakaPlayerService {
     console.log(manifestUri);
     window.player.load(manifestUri)
     .then(() => {
+      const totalTime = this.util.getTimer(this.AUDIO.duration);
+      const currTime = this.util.getTimer(0);
+      
       this.util.enablePlayer();
+      this.util.loadTimes(currTime, totalTime);
       this.AUDIO.play();
       console.log('The audio has now been loaded!');
     })
