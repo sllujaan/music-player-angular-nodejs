@@ -6,8 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recent.component.css']
 })
 export class RecentComponent implements OnInit {
-
+  
   constructor() { }
+
+  public DOMLoaded = false;
+
+  ngAfterViewInit(): void {
+    this.DOMLoaded = true;
+  }
+
 
   ngOnInit(): void {
   }

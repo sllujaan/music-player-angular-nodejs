@@ -1,1 +1,15 @@
-<p>year works!</p>
+<!-- <p>year works!</p> -->
+
+<div class="top-container">
+    <div class="musics-container" #musicsContainer></div>
+    <div class="common-controls">
+        <span *ngIf="!DOMLoaded" class="icon-spinner3 rotate large ico-loading"></span>
+        <div *ngIf="DOMLoaded" class="serverError">Oops! The app is in Development process. Some of its features may not be available. Thank You!</div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+</div>

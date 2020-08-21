@@ -61,7 +61,7 @@ export class ShakaPlayerService {
       // Listen for error events.
       this.initShakaEvents(player);
 
-      this.loadManifest(this.manifestUri);
+      //this.loadManifest(this.manifestUri);
 
       
   }

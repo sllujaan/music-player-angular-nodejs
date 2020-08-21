@@ -13,7 +13,7 @@ export class SeekerControlsService {
   ) { }
 
 
-  public mini_player_title: string = 'Neflix Music ss';
+  public mini_player_title: string = 'Neflix Music';
 
 
   setComponentElements(componentElements: any) {

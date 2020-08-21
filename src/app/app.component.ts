@@ -92,14 +92,14 @@ export class AppComponent implements OnInit {
     var player = this.playerContainer.nativeElement
     
     //this.render.setStyle(player, 'visibility', 'hidden')
-    this.render.setStyle(player, 'top', '100%')
+    this.render.setStyle(player, 'top', '110%')
 
     console.log(player)
     
   }
 
 
-
+  
 
 
   

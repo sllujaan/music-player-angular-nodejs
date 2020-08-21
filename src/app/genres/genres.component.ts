@@ -9,6 +9,12 @@ export class GenresComponent implements OnInit {
 
   constructor() { }
 
+  public DOMLoaded = false;
+
+  ngAfterViewInit(): void {
+    this.DOMLoaded = true;
+  }
+
   ngOnInit(): void {
   }
 

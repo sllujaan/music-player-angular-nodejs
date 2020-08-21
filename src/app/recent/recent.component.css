@@ -1,0 +1,161 @@
+
+
+:host{
+    --body-z-index: 0;
+    --player-z-index: 1000;
+    
+    --musics-container-top: 150px;
+    --z-index-picture: 40;
+
+    --font-color: #e50914;
+    --menu-color: black;
+
+    --border-radius-musics-container: 0px;
+}
+
+
+*{
+    user-select: none;
+}
+
+
+
+.musics-container {
+    /* background-color: green; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-left: 220px;
+    margin-top: 160px;
+    padding-bottom: 40px;
+
+
+    margin-top: 100px;
+}
+
+.music-container{
+    width: 150px;
+    background-color: var(--font-color);
+    margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+
+    z-index: var(--z-index-music-container);
+
+    border: 1px solid var(--menu-color);
+    border-radius: var(--border-radius-musics-container);
+
+}
+
+.music-container:active {
+    transform: scale(1.01);
+}
+
+
+
+.picture{
+    height: 150px;
+    width: 150px;
+    background-color: var(--font-color);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    /*background-image: url("music_default.png");*/
+    background-size: auto calc(100% - 50px);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: var(--z-index-picture);
+
+    border-top-left-radius: var(--border-radius-musics-container);
+    border-top-right-radius: var(--border-radius-musics-container);
+
+}
+
+
+.name {
+    background-color: var(--font-color);
+    height: 40px;
+    
+    width: 100%;
+    padding: 0 10px;
+
+    position: relative;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+    z-index: var(--z-index-picture);
+
+    border-bottom-left-radius: var(--border-radius-musics-container);
+    border-bottom-right-radius: var(--border-radius-musics-container);
+}
+
+
+
+
+.common-controls {
+    /* background-color: orange; */
+    text-align: center;
+    margin-left: 230px;
+}
+
+
+
+
+@media only screen and (max-width: 700px) {
+
+
+
+    .musics-container {
+        margin-top: 160px;
+        margin-left: 0;
+    }
+    
+    .common-controls {
+        margin-left: 0;
+    }
+}
+
+
+.load-more {
+    border: none;
+    background-color: var(--font-color);
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+
+.loading-music > .loading {
+    background-color: initial;
+}
+
+.serverError {
+    color: var(--font-color);
+    padding: 10px 20px;
+    
+    font-size: xx-large;
+}
+
+.DomLoading {
+    color: var(--font-color);
+    padding: 10px 20px;
+
+    font-size: xx-large;
+}
+
+
+
+
+
+/*loading icon color*/
+.ico-loading {
+    color: var(--font-color);
+}
