@@ -673,11 +673,11 @@
           
                   <!--Player control buttons contols---------------------------------->
                   <div class="btns" #control_buttons>
-                      <div class="btn-loop"><i class="fas fa-redo fa-2x"></i></div>
-                      <div class="btn-prev"><i class="fas fa-backward fa-2x"></i></div>
+                      <div class="btn-loop"><i class="fas fa-redo fa-2x" (click)="showFeatureNotAvailable('Loop')"></i></div>
+                      <div class="btn-prev"><i class="fas fa-backward fa-2x" (click)="showFeatureNotAvailable('Prev')"></i></div>
                       <div class="btn-play-pause"><i [ngClass]="playPauseClass" (click)="clickPlayPause($event)"></i></div>
-                      <div class="btn-next"><i class="fas fa-forward fa-2x"></i></div>
-                      <div class="btn-shuffle"><i class="fas fa-random fa-2x"></i></div>
+                      <div class="btn-next"><i class="fas fa-forward fa-2x" (click)="showFeatureNotAvailable('Next')"></i></div>
+                      <div class="btn-shuffle"><i class="fas fa-random fa-2x" (click)="showFeatureNotAvailable('Shuffle')"></i></div>
                   </div>
                   <!------------------------------------------------------------------>
           

@@ -197,6 +197,9 @@ export class AppComponent implements OnInit {
     )
   }
 
+  showFeatureNotAvailable(featureName: string) {
+    alert(`${featureName} feature currently not available!`);
+  }
 
   
 
