@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef, isDevMode } from '@angular/core';
 import { MusicPlayerApiService } from './music-player-api.service';
 import { SeekerControlsService } from './seeker-controls.service';
 import { ShakaPlayerService } from './shaka-player.service';

@@ -15,7 +15,7 @@
                 <img [attr.data-musicPath]="music.musicPath" id="contianer-image" [src]="musics_api.getImageUrl(music.imageUrl)" alt="photo" srcset="" class="picture" >
                 
             </div>
-            <div [attr.data-musicPath]="music.musicPath" class="name">{{music.musicName}}</div>
+            <div [attr.data-musicPath]="music.musicPath" class="name">{{(music.title && music.title.length > 0) ? (music.title):(music.musicName)}}</div>
             <!-- <div class="play"><i class="fas fa-play fa-1x"></i></div> -->
             
         </div>

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 
@@ -9,7 +9,10 @@ export class MusicPlayerApiService {
 
   constructor(private http: HttpClient) { }
 
-  PRODUCTION = true;
+  //check if production
+
+  private PRODUCTION: boolean = true;
+  //PRODUCTION = false;
   
 
   PRODUCTION_URL = `https://musicplayerpro.herokuapp.com/`

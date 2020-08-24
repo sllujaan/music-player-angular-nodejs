@@ -96,6 +96,8 @@
 
     border-bottom-left-radius: var(--border-radius-musics-container);
     border-bottom-right-radius: var(--border-radius-musics-container);
+    
+    color: white;
 }
 
 
